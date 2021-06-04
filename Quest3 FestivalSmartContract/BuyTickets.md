@@ -1,0 +1,16 @@
+## 4. Festival Buy Ticket
+
+A core functionality of our smart contract, the ability to sell tickets. We will sell them for 0.1 Ethers. An Ethereum address could own several tickets
+
+### Instructions
+
+- Create a new Smart Contract `BuyTickets`
+- Add a function `buyTicket` that takes no parameters and that allows an user to buy one ticket for 0.1 Ethers. If an user pays more that 0.1 the excess is kept. 
+- Add a function `ticketsOf` that takes as parameter an ethereum address and returns the number of tickets this address owns. 
+
+### Resources
+- [solidity docs](https://docs.soliditylang.org/)
+
+### Relevance
+
+We learn to take into account the transaction value.
