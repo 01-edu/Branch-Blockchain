@@ -8,7 +8,7 @@
 
 - Create a js file and store the address of both accounts in the `accounts` array.
 
-#### Usage
+### Usage
 
 ```js
 const accounts = ['0x8475Ff3608A96925b9106266F084dDAfa82a563e', '0x11dC467C6433BE24bF20c9f41C3593a26A0A98D9']

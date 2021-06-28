@@ -10,7 +10,7 @@
 
 - Create a js file and store the hash of your transaction in a variable `txhash`
 
-#### Usage
+### Usage
 
 ```js
 const txHash = '0xf02c4a1487aa2e45fc2c77cb5a28713a1474d86d5f4292b264875ccc5da82b67'

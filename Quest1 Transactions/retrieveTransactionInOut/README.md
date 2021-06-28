@@ -17,7 +17,7 @@ This model is referred to as `UTXO` for "Unspent Transaction Outputs", as there 
 
 Using a public bitcoin API of Bitcoin testnet, create a function `retrieveTxValue` that takes as input a hash of a simple transaction, and returns an object with an array of inputs values and an array outputs values in this transaction.
 
-#### Usage
+### Usage
 
 ```js
 txHash = 'd030023d96b9170af9ec2fe5d9b62a5eacbcbf144c68f3f45d68bca72d1d3649'
