@@ -1,1 +1,1 @@
-###### Did you receive the correct amount ? 
+###### Did you receive the correct amount?

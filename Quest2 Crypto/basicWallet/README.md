@@ -4,14 +4,16 @@
 
 - Create a function `generateAddress()` that generates a cryptographic key pair on any elliptic curve and stores locally the private key in a `wallet.pem` file and returns the hash of the public key (`spki/der`) prepended with '01'
 
-- Create a function `createTransaction(amount, recipient)` that takes as arguments an integer and a string . It returns a string with the following format:
-`sender + recipient + hexAmount + signature`. 
-  - `sender` is the hash of the public key (`spki/der`) of the current user prepended with '01'
-  - `recipient` is the recipient taken as parameter
-  - `amount` is the amount taken as parameter in hexadecimal form
-  - `signature` is a digital signature of the first three fields, using the private key stored in `wallet.pem`
+- Create a function `createTransaction(amount, recipient)` that takes as arguments an integer and a string. It returns a string with the following format:
 
-### Example
+`sender + recipient + hexAmount + signature`
+
+- `sender` is the hash of the public key (`spki/der`) of the current user prepended with '01'
+- `recipient` is the recipient taken as parameter
+- `amount` is the amount taken as parameter in hexadecimal form
+- `signature` is a digital signature of the first three fields, using the private key stored in `wallet.pem`
+
+### Usage
 
 ```js
 let address = generateAddress() 
@@ -28,8 +30,8 @@ console.log(transaction)
 - [Node.js _fs_ writeFileSync](https://nodejs.org/docs/latest-v14.x/api/fs.html#fs_fs_writefilesync_file_data_options)
 - [Node.js _fs_ readFileSync](https://nodejs.org/docs/latest-v14.x/api/fs.html#fs_fs_readfilesync_path_options)
 
-
 ### Relevance
+
 _- Do you always look at it encoded ?_
 
 _- Well you have to, the image translators work for the construct program, but there is way too much information to decode the Matrix_

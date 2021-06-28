@@ -1,4 +1,4 @@
-## hash 
+## hash
 
 ### Instructions
 
