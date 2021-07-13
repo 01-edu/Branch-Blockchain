@@ -1,13 +1,10 @@
-## Signer 
+## Signer
 
 ### Instructions
 
-Using a public bitcoin API of Bitcoin testnet
+Using a public bitcoin API of Bitcoin testnet, create a function `retrieveTxValue` that takes as input a hash of a simple transaction, and returns the total value transferred in this transaction in bitcoins.
 
-Create a function `retrieveTxValue` that takes as input a hash of a simple transaction, and returns the total value transfered in this transaction in bitcoins.
-
-
-#### Example
+### Usage
 
 ```js
 txHash = 'd030023d96b9170af9ec2fe5d9b62a5eacbcbf144c68f3f45d68bca72d1d3649'
@@ -15,7 +12,6 @@ retrieveTxValue(txHash) // Expected : 0.001
 ```
 
 *Nota bene: Internally, Bitcoin uses satoshis, 1 satoshi = 10^-8 bitcoin*
-
 
 ### Relevance
 

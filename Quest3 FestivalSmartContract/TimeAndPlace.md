@@ -1,6 +1,6 @@
 ## Time and Place
 
-To be a considered a festival, we need initially specify a time and a place. Everything else can be organised later.
+To be considered a festival, we need initially specify a time and a place. Everything else can be organized later.
 
 ### Instructions
 
@@ -12,12 +12,11 @@ To be a considered a festival, we need initially specify a time and a place. Eve
 
 - create a function `getPlace` that returns the place of the festival.
 
-### Resources
-
-- [unix time](https://en.wikipedia.org/wiki/Unix_time)
-- [solidity docs: constructor](https://docs.soliditylang.org/en/v0.8.4/contracts.html)
-
-
 ### Relevance
 
 We have now a constructor function.
+
+### Notions
+
+- [unix time](https://en.wikipedia.org/wiki/Unix_time)
+- [solidity docs: constructor](https://docs.soliditylang.org/en/v0.8.4/contracts.html)

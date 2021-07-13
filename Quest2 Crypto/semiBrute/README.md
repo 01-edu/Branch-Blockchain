@@ -1,10 +1,10 @@
-## hash 
+## hash
 
 ### Instructions
 
 Create a function `semiBrute` that takes one argument, a target, and returns string which hash `sha256` starts with the target. The target is an hexadecimal number on two characters.
 
-### Example
+### Usage
 
 ```js
 solution = semiBrute("e2")
@@ -17,4 +17,3 @@ console.log(solution)
 ### Notions
 
 - [Module crypto: hash](https://nodejs.org/docs/latest-v14.x/api/crypto.html#crypto_class_hash)
-

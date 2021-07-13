@@ -1,21 +1,21 @@
-## Merkle tree 
+## Merkle tree
 
 ### Instructions
 
-Create a function `increment` that takes as argument a number written in hexadecimal form and returns the same number incremented by one. 
+Create a function `increment` that takes as argument a number written in hexadecimal form and returns the same number incremented by one.
 
-### Example
+### Usage
 
 ```js
 increment("03")       // expected : <Buffer 04>
-increment("a0")       // expected : <Buffer a1> 
+increment("a0")       // expected : <Buffer a1>
 increment("ff")       // expected : <Buffer 01 00>
 increment("d537")     // expected : <Buffer d5 38>
 ```
 
 ### Relevance
 
-Crypographic algorithms use a `binary` representation of variables internally (`Buffer` in nodejs). `Hexadecimal` representation is used to facilitate human reading. 
+Cryptographic algorithms use a `binary` representation of variables internally (`Buffer` in nodejs). `Hexadecimal` representation is used to facilitate human reading.
 
 ### Notions
 
