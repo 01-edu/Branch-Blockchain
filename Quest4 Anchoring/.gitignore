@@ -1,0 +1,9 @@
+node_modules/
+build/
+package-lock.json
+data.json
+node_modules
+
+#Hardhat files
+cache
+artifacts
