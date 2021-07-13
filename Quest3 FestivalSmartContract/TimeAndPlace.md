@@ -2,6 +2,8 @@
 
 To be considered a festival, we need initially specify a time and a place. Everything else can be organized later.
 
+We will use a constructor function to set the time and place when the Smart Contract is deployed.
+
 ### Instructions
 
 - Create a new Smart Contract `TimeAndPlace`.
@@ -11,10 +13,6 @@ To be considered a festival, we need initially specify a time and a place. Every
 - create a function `getStartTime` that returns the starting time (and date) of the festival as an Unix timestamp.
 
 - create a function `getPlace` that returns the place of the festival.
-
-### Relevance
-
-We have now a constructor function.
 
 ### Notions
 

@@ -6,7 +6,7 @@ Create a function `hashFile(file)` that given the name of a file in the current 
 
 ### Usage
 
-<textfile.txt>
+_textfile.txt_
 
 ```
 This is a text file

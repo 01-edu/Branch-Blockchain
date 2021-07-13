@@ -1,6 +1,6 @@
 ## Artists Do Work!
 
-Artists deserve to be payed too!
+Artists deserve to be payed too! Along the way, we will learn payments and divisions in Solidity
 
 ### Instructions
 
@@ -8,9 +8,6 @@ Artists deserve to be payed too!
 - Add the `addRemuneratedArtist` function that takes as parameters an `address` to register an artist in the festival. Only the organizer that deployed the Smart Contract can trigger that function
 - Add a function `getPayed` that takes no parameters and that allows an artist, registered with the function above, to receive 1 Ether **once**, providing that there are enough funds in the Smart Contract!
 
-### Relevance
-
-We practice registers, payments and divisions !
 
 ### Notions
 

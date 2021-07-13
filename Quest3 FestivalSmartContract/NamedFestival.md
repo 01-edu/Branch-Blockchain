@@ -22,7 +22,7 @@ pragma solidity ^0.8.4;
 - Create a public function `setName()` that takes a string as parameter and sets the name of the festival
 - Finally a function `getName()` takes no parameter and retrieves the name
 
-### Expected Functions
+#### Expected Functions
 
 ```js
 contract NamedFestival {
@@ -37,10 +37,6 @@ function getName() public view returns (string memory) {
     //...
 }
 ```
-
-### Relevance
-
-This is our first smart contract!
 
 ### Notions
 

@@ -1,8 +1,6 @@
 ## Retrieve Transaction In and Out
 
-### Instructions
-
-A Bitcoin transaction consists of one or several inputs and one or several outputs. The sum of the inputs is slightly superior to the sum of the output to take into account the fee. Some transactions, called "coinbase", are financing miners and do not have a valid input. Some outputs might be null too.
+A Bitcoin transaction consists of one or several inputs and one or several outputs. The sum of the inputs is slightly superior to the sum of the output to take into account the fee. One transaction per block, called "coinbase", pays miners and does not have a valid input. For some transactions, outputs might be null too.
 
 This model is referred to as `UTXO` for "Unspent Transaction Outputs", as there is a ongoing list of unspent outputs.
 
@@ -14,6 +12,8 @@ This model is referred to as `UTXO` for "Unspent Transaction Outputs", as there 
 |   	    |  0.19	|
 
 *+ 0.01 fee*
+
+### Instructions
 
 Using a public bitcoin API of Bitcoin testnet, create a function `retrieveTxValue` that takes as input a hash of a simple transaction, and returns an object with an array of inputs values and an array outputs values in this transaction.
 
@@ -29,10 +29,6 @@ retrieveTxData(txHash)
     }
 */
 ```
-
-### Relevance
-
-Discover a Bitcoin transaction structure.
 
 ### Notions
 

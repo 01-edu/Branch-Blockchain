@@ -1,5 +1,7 @@
 ## Signer
 
+Elliptic curve cryptography is used in most blockchain projects to sign transactions. Using Node.js base library we will practise simple signatures.
+
 ### Instructions
 
 - Create a function `init()` that generates a cryptographic key pair on any elliptic curve and returns the public key in any format.
@@ -18,10 +20,6 @@ console.log(verifier(message,pubKey,signature))
 // expected result : 
 // true
 ```
-
-### Relevance
-
-Elliptic curve cryptography is used in most blockchain projects to sign transactions
 
 ### Notions
 

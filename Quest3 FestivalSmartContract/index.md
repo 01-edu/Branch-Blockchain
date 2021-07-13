@@ -2,7 +2,7 @@
 
 Today we will build our first Smart Contracts. Smart Contracts are programs deployed on a blockchain network to provide additional functionalities. In the context of this quest, we will focus on Ethereum Smart Contracts. There main development language is Solidity.
 
-We will create step by step the functionalities of a Smart Contract. The festival consists of information's that will be stored in the smart contract such as a name, a lineup of artists, a date and the Smart Contract will provide the minimal capabilities of buying tickets and share benefits.
+We will create step by step the functionalities of a Smart Contract. The festival consists of information that will be stored in the smart contract such as a name, a lineup of artists, a date and the Smart Contract will provide the minimal capabilities of buying tickets and share benefits.
 
 Each exercise requires a distinct Smart Contract.
 

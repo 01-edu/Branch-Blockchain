@@ -1,4 +1,6 @@
-## Signer
+## Send Eth Transaction
+
+We will create our first transaction on Ethereum using one of its testnets called `Kovan`.
 
 ### Instructions
 
@@ -15,10 +17,6 @@
 ```js
 const txHash = '0xf02c4a1487aa2e45fc2c77cb5a28713a1474d86d5f4292b264875ccc5da82b67'
 ```
-
-### Relevance
-
-Welcome to your first Ethereum transaction!
 
 ### Resources
 

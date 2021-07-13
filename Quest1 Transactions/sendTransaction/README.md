@@ -1,4 +1,5 @@
-## Signer
+## Send Transaction
+
 
 ### Instructions
 
@@ -16,7 +17,11 @@
 const txHash = 'be3d0d245e7dce50964ac9157aee7e18a3828be11d89f72ee0bc3f76b526e5bb'
 ```
 
-*Nota Bene : The transaction must have been send in the last hour for the test to validate*
+Congrats for your first Bitcoin transaction!
+
+### Hint
+
+The transaction must have been send in the last hour for the test to validate
 
 ### Notions
 
@@ -25,7 +30,3 @@ const txHash = 'be3d0d245e7dce50964ac9157aee7e18a3828be11d89f72ee0bc3f76b526e5bb
 - [faucet](https://kuttler.eu/en/bitcoin/btc/faucet/)
 - [faucet](https://bitcoinfaucet.uo1.net/)
 - [faucet](https://testnet-faucet.com/btc-testnet/)
-
-### Relevance
-
-Congrats for your first Bitcoin transaction!

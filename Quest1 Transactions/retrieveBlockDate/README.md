@@ -12,11 +12,9 @@ You can use any public bitcoin API, for instance blockcypher API (see references
 retrieveBlockDate(1881467) // Expected : 2020-11-05T20:18:48.000Z
 ```
 
-#### Help
+### Hint
 
 The endpoint for Bitcoin testnet on blockcypher is `https://api.blockcypher.com/v1/btc/test3/blocks/`
-
-### Relevance
 
 ### Notions
 

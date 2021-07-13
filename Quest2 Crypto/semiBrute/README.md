@@ -1,4 +1,4 @@
-## hash
+## Semi-brute
 
 ### Instructions
 

@@ -9,11 +9,9 @@ In order for our festival to be properly managed, we need to define an organizer
 - Add functions `getStartTime` and `getPlace` that retrieve the starting time and place.
 - Add functions `updateStartTime` and `updatePlace` that update the corresponding value only if the caller of the function is the original deployer of the Smart Contract.
 
-*Hint: The constructor function might save the address of the deployer of the contract in an internal variable*
+### Hint
 
-### Relevance
-
-We learn constructors and conditions
+The constructor function might save the address of the deployer of the contract in an internal variable
 
 ### Notions
 

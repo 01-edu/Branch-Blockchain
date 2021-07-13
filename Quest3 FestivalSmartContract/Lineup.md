@@ -1,6 +1,6 @@
 ## Lineup
 
-For this to be a good festival, we need to register artists.
+For this to be a good festival, we need to register artists. Hip hip hip, arrays!
 
 ### Instructions
 
@@ -8,11 +8,9 @@ For this to be a good festival, we need to register artists.
 - Create a function `addArtist(string)` that takes as parameter a string. Artists are added in their order of registration.
 - Create a function`lineup(uint)` that given an index returns the name of corresponding artist.
 
-*Hint: public variables offer an implicit getter function*
+### Hint
 
-### Relevance
-
-Hip hip hip, arrays!
+Public variables offer an implicit getter function
 
 ### Notions
 
