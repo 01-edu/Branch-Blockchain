@@ -2,7 +2,7 @@
 
 ### Instructions
 
-Using a public bitcoin API of Bitcoin testnet, create a function `retrieveTxValue` that takes as input a hash of a simple transaction, and returns the total value transferred in this transaction in bitcoins.
+Using a public bitcoin API of Bitcoin testnet, create a function `retrieveTxValue()` that takes as input a hash of a simple transaction, and returns the total value transferred in this transaction in bitcoins.
 
 ### Usage
 

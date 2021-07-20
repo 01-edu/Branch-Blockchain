@@ -4,7 +4,7 @@
 
 Using Node.js, create a function `retrieveBlockDate()` that takes as input the height of a block on the Bitcoin testnet and returns the date of this block. The date must be a `date` javascript object.
 
-You can use any public bitcoin API, for instance blockcypher API (see references)
+You can use any public bitcoin API, for instance blockcypher API (see notions)
 
 ### Usage
 
