@@ -1,6 +1,6 @@
 ## Send Eth Transaction
 
-We will create our first transaction on Ethereum using one of its testnets called `Kovan`.
+You will create your first transaction on Ethereum using one of its testnets called `Kovan`.
 
 ### Instructions
 
@@ -18,7 +18,7 @@ We will create our first transaction on Ethereum using one of its testnets calle
 const txHash = '0xf02c4a1487aa2e45fc2c77cb5a28713a1474d86d5f4292b264875ccc5da82b67'
 ```
 
-### Resources
+### Notions
 
 - A cross platform multi-currency wallet [Bitpay wallet](https://bitpay.com/wallet/)
 - a cross platform Ethereum only wallet [metamask](https://metamask.io/)

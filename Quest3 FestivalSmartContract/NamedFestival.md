@@ -1,18 +1,18 @@
 ## Named Festival
 
-Let's create our first smart contract! For a beginner friendly environment, I recommend [remix](https://remix.ethereum.org). It is an online IDE that provides many useful functionalities.
+In this exercise you will create your first smart contract! For a beginner friendly environment, I recommend [remix](https://remix.ethereum.org). It is an online IDE that provides many useful functionalities.
 
 If you want a local environment, more scriptable, you can have a look at [hardhat](https://hardhat.org).
 
 ### Instructions
 
-- First, we need to specify the licence and the solidity version we will be using. If you have not thought about it, you can use UNLICENSED.
+- First, you need to specify the licence and the solidity version you will be using. If you have not thought about it, you can use UNLICENSED.
 
 ```js
 // SPDX-License-Identifier: UNLICENSED
 ```
 
-- Pragma specifies the version of solidity we will use. The tests are designed to work with version 0.8.4 of solidity.
+- Pragma specifies the version of solidity you will use. The tests are designed to work with version 0.8.4 of solidity.
 
 ```js
 pragma solidity ^0.8.4;
@@ -20,7 +20,7 @@ pragma solidity ^0.8.4;
 
 - Then create a Smart Contract named `NamedFestival`.
 - Create a public function `setName()` that takes a string as parameter and sets the name of the festival
-- Finally a function `getName()` takes no parameter and retrieves the name
+- Finally a function `getName()` takes no parameters and retrieves the name
 
 #### Expected Functions
 

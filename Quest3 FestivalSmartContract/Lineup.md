@@ -1,6 +1,6 @@
 ## Lineup
 
-For this to be a good festival, we need to register artists. Hip hip hip, arrays!
+For this to be a good festival, you need to register artists. Hip hip hip, arrays!
 
 ### Instructions
 

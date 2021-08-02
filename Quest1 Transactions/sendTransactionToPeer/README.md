@@ -1,6 +1,6 @@
 ## Send transaction to peer
 
-We will send our first peer-to-peer transaction between two studends.
+You will send your first peer-to-peer transaction between two students.
 
 ### Instructions
 

@@ -1,6 +1,5 @@
 ## Send Transaction
 
-
 ### Instructions
 
 - Create manually a wallet on **Bitcoin testnet**
