@@ -1,0 +1,29 @@
+{
+  "name": "Quest",
+  "version": "0.2.0",
+  "description": "non",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx waffle && mocha",
+    "compile": "npx waffle",
+    "deploy": "node deploy.js",
+    "serve": "npx live-server dapp",
+    "start": "npm run compile && npm run deploy && npm run serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "chai": "^4.3.4",
+    "ethereum-waffle": "^3.3.0",
+    "ethers": "^5.2.0",
+    "express": "^4.17.1",
+    "express-static": "^1.2.6",
+    "hardhat": "^2.3.0",
+    "puppeteer": "^9.1.1"
+  },
+  "dependencies": {
+    "puppeteer-core": "^9.1.1"
+  }
+}
