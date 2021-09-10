@@ -24,6 +24,6 @@ checkDocument("Hello world!","0x49c8803ea126179502d59707dbcd9e9de15f5d441920936e
 
 ```
 
-### Resources
+### Notions
 
 - [ethers provider](https://docs.ethers.io/v5/api/providers/provider/#Provider--transaction-methods)
