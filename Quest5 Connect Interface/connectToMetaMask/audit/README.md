@@ -11,4 +11,3 @@
 ##### Make a transaction toward or from this account and press `Refresh Balance`
 
 ###### Does the page displays the correct new balance?
-

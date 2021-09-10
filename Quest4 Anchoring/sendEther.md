@@ -13,7 +13,7 @@ function sendEther(amount, address) {
 module.exports = sendEther
 ```
 
-### Resources
+### Notions
 
 - [hardhat](https://hardhat.org)
 - [ganache](https://www.trufflesuite.com/ganache)
