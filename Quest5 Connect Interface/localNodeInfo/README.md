@@ -4,19 +4,20 @@ To start, we will create a simple page that displays basic information from our 
 
 ### Instructions
 
-Create a web page, `localNodeInfo.html` that loads an ethereum library, connects to a local node (at `http://localhost:8545`) and displays basic information : 
-- In an element with `id`=`chainId`, the number ID of the current network 
+Create a web page, `localNodeInfo.html` that loads an ethereum library, connects to a local node at `http://localhost:8545` and displays basic information :
+
+- In an element with (`id`=`chainId`), the number ID of the current network
 - In an element with `blockNumber` as `id` the number of blocks in the chain
 
 ![image](networkInfo.png)
 
 ### Hint
 
-You can use any library such as ethers.js or web3.js to connect to your local node.
+You can use any library such as `ethers.js` or `web3.js` to connect to your local node.
 
-Automated tests check for elements with specific IDs, the design is up to you. 
+Automated tests check for elements with specific IDs, the design is up to you.
 
-Minimal structure: 
+Minimal structure:
 
 ````HTML
 <!DOCTYPE html>

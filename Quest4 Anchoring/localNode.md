@@ -31,9 +31,7 @@ npx ganache-cli
 
 Noticeably, local javascript nodes are not connected to any network and provide already 10 account populated with test ether.
 
-### Resources
+### Notions
 
 - [hardhat](https://hardhat.org)
 - [ganache](https://www.trufflesuite.com/ganache)
-
-# Integration : This exercise should be self-assessed/ or audit?

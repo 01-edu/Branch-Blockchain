@@ -17,7 +17,7 @@ function getAccount() {
 module.exports = getAccount
 ```
 
-### Resources
+### Notions
 
 - [hardhat](https://hardhat.org)
 - [ganache](https://www.trufflesuite.com/ganache)
