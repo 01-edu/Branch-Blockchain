@@ -76,9 +76,9 @@ const main = async () => {
   const [test, rawCode] = await Promise.all([
     read(joinPath(root, `${name}.test.js`), 'test'),
     // Local version XL
-    read(joinPath(root, `${name}.sl.js`), 'student solution'),
-    // Prod XL 
-    // read(`/jail/student/${name}.js`, 'student solution'),
+    //read(joinPath(root, `${name}.sl.js`), 'student solution'),
+    // Prod XL
+    read(`/jail/student/${name}.js`, 'student solution'),
   ])
 
   // this is a very crude and basic removal of comments
@@ -106,7 +106,7 @@ const main = async () => {
   const t = (f) => tests.push(f)
   eval(combined)
 
-  const ctx = (await ( setup && setup())) || {} 
+  const ctx = (await ( setup && setup())) || {}
   const tools = { eq, fail, wait, code, ctx }
   for (const [i, t] of tests.entries()) {
     try {
