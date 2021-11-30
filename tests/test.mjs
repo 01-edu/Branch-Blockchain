@@ -44,7 +44,7 @@ const eq = (a, b) => {
   return true
 }
 
-const name = process.argv[2]
+const name = process.argv[3]
 const fatal = (...args) => {
   console.error(...args)
   process.exit(1)
@@ -76,9 +76,9 @@ const main = async () => {
   const [test, rawCode] = await Promise.all([
     read(joinPath(root, `${name}.test.js`), 'test'),
     // Local version XL
-    //read(joinPath(root, `${name}.sl.js`), 'student solution'),
+    read(joinPath(root, `${name}.js`), 'student solution'),
     // Prod XL
-    read(`/jail/student/${name}.js`, 'student solution'),
+    //read(`/jail/student/${name}.js`, 'student solution'),
   ])
 
   // this is a very crude and basic removal of comments
