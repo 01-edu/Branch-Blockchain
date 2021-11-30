@@ -3,4 +3,4 @@
 
 set -e
 
-node /app/test.mjs "/jail/student" "${EXERCISE}"
+node /app/test.mjs "${EXERCISE}"
