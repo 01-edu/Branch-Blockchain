@@ -63,6 +63,8 @@ const read = (filename, description) =>
     ifNoEnt(() => fatal(`Missing ${description} for ${name}`)),
   )
 
+console.log("Testing", name)
+
 const stackFmt = (err, url) => {
   if (!(err instanceof Error)) {
     throw Error(`Unexpected type thrown: ${typeof err}. usage: throw Error('my message')`)
