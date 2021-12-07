@@ -76,7 +76,7 @@ const stackFmt = (err, url) => {
 
 const main = async () => {
   const [test, rawCode] = await Promise.all([
-    read(joinPath(root, `${name}.test.js`), 'test'),
+    read(joinPath(root, `${name}.jtest.js`), 'test'),
     // Local version XL
     // read(joinPath(root, `${name}.js`), 'student solution'),
     // Prod XL
