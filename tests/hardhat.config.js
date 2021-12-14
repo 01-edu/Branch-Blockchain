@@ -9,8 +9,8 @@ module.exports = {
   solidity: "0.8.4",
 
   paths: {
-    sources: "./contracts",
-    tests: "./",
+    sources: "./student",
+    tests: "./tests",
     cache: "./cache",
     artifacts: "./artifacts"
   },

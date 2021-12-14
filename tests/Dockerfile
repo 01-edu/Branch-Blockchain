@@ -1,13 +1,13 @@
 FROM node:16-alpine
 
-WORKDIR /app
-
-COPY package.json /app
+WORKDIR /jail
+COPY package.json .
+COPY hardhat.config.js .
 RUN npm install
+RUN mkdir -p ./tests
+COPY ./*.test.js ./tests/
 
+WORKDIR /app
 COPY . .
-
-# for local testing
-# COPY ./dft.solutions /jail/student
 
 ENTRYPOINT ["/app/entrypoint.sh"]
