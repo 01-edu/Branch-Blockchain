@@ -2,22 +2,26 @@ require("@nomiclabs/hardhat-waffle");
 
 const { TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD } = require("hardhat/builtin-tasks/task-names");
 const path = require("path");
+const expectedSolcVersion = "0.8.11"
 
 subtask(TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD, async (args, hre, runSuper) => {
-  if (args.solcVersion === "0.8.10") {
-    const compilerPath = path.join(__dirname, "solc");
+  if (args.solcVersion === expectedSolcVersion) {
+    // const compilerPath = path.join(__dirname, "solc");
+    const compilerPath = path.join("/usr/bin", "solc");
+
+    console.log(">>> Compiler path : ", compilerPath)
      
     return {
       compilerPath,
-      isSolcJs: true, // if you are using a native compiler, set this to false
+      isSolcJs: false, // if you are using a native compiler, set this to false
       version: args.solcVersion,
       // this is used as extra information in the build-info files, but other than
       // that is not important
-      longVersion: "solc-linux-amd64-v0.8.10"
+      longVersion: "solc-linux-v"+expectedSolcVersion
     }
   }
-
-  // we just use the default subtask if the version is not 0.8.5
+  console.log("Please use version", expectedSolcVersion)
+  // we just use the default subtask if the version is not this
   return runSuper();
 })
 
@@ -27,11 +31,12 @@ subtask(TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD, async (args, hre, runSuper) => {
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.8.10",
+  solidity: expectedSolcVersion,
 
   paths: {
+    // root: "/jail",
     sources: "./student",
-    tests: "./",
+    tests: "./test",
     cache: "./cache",
     artifacts: "./artifacts"
   },

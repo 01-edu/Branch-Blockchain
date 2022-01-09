@@ -1,10 +1,15 @@
-FROM node:16-alpine
+FROM ubuntu:focal
+
+RUN apt-get update && \
+		apt-get install software-properties-common apt-utils curl sudo -y 
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && \
+	add-apt-repository ppa:ethereum/ethereum && \
+    apt-get update && \
+    apt-get install solc tree nodejs wget -y
+RUN npm install -g npm
 
 WORKDIR /app
 COPY . .
 RUN npm install
-
-RUN  wget -O solc https://github.com/ethereum/solidity/releases/download/v0.8.10/soljson.js
-# For native compiler should be : https://binaries.soliditylang.org/linux-amd64/solc-linux-amd64-v0.8.7+commit.e28d00a7 
 
 ENTRYPOINT ["/app/entrypoint.sh"]
