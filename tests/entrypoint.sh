@@ -1,9 +1,9 @@
 #!/bin/sh
 
 ## Debugging info 
-DEBUG=true
+DEBUG=false
 
-if [ $DEBUG == true ]; then
+if [ $DEBUG = true ]; then
   echo ">>> Entrypoint <<<"
   echo "    User" $(whoami) $USER
   echo "    Path:" $PATH
