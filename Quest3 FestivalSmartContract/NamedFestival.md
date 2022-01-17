@@ -2,7 +2,7 @@
 
 In this exercise you will create your first smart contract! For a beginner friendly environment, I recommend [remix](https://remix.ethereum.org). It is an online IDE that provides many useful functionalities.
 
-If you want a local environment, more scriptable, you can have a look at [hardhat](https://hardhat.org).
+If you want a more complete local dev environment, you can have a look at [hardhat](https://hardhat.org).
 
 ### Instructions
 

@@ -21,5 +21,5 @@ const txHash = '0xf02c4a1487aa2e45fc2c77cb5a28713a1474d86d5f4292b264875ccc5da82b
 ### Notions
 
 - A cross platform multi-currency wallet [Bitpay wallet](https://bitpay.com/wallet/)
-- a cross platform Ethereum only wallet [metamask](https://metamask.io/)
+- A cross platform Ethereum only wallet [MetaMask](https://metamask.io/)
 - Find a [kovan faucet](https://letmegooglethat.com/?q=kovan+faucet)

@@ -13,6 +13,9 @@ For this, we will use a local test node and interact with it using JavaScript
 4. [sendHash](sendHash.md)
 5. [checkDocument](checkDocument.md)
 7. [register](register.md)
+
+
+Keep for later
 8. [registerWithEvents](registerWithEvents.md)
 
 

@@ -1,5 +1,9 @@
 ## Semi-brute
 
+Hash functions are used to secure information. While there is no way to compute on the original information, one can try every possible value. 
+
+This is key for Proof of Work algorithms, as miners are required to find a hash below a target.
+
 ### Instructions
 
 Create a function `semiBrute()` that takes as argument a target, which is a two characters hexadecimal number, and returns a string which hash `sha256` starts with the target.

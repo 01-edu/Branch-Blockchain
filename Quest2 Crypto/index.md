@@ -2,9 +2,9 @@
 
 Today , we will learn the fundamentals of cryptography that underlies all blockchain projects. We will practice binary variables, hash functions and digital signatures. By the end of the quest, you should be able to create a basic wallet to generate keys, store them and sign transaction.
 
-Buffers are a builtin type in nodejs used to represent binary objects. You create a buffer from any object by using the function `Buffer.from()`. As usual in JavaScript there are a lot of implicit conversions. Be careful that a string representing a number is not the same as the actual number.
+Buffers are a builtin type in nodejs used to represent binary objects. You create a buffer from any object by using the function `Buffer.from()`. As usual in JavaScript there are a lot of implicit conversions. Be aware for instance that a string representing a number is different from the actual number.
 
-For cryptography, you may have heard it is used the encryption and decryption of messages. While this is often true, in the blockchain and cryptoassets industries this is not how we will primarily use it. The two families of algorithms we will see are:
+For cryptography, you may have heard how it is used the encryption and decryption of messages. While this is often true, in the blockchain and cryptoassets industries this is not how we will primarily use it. The two families of algorithms we will see are:
 
 **Cryptographic hash** functions are algorithms that take as input any data and produce an unique fingerprint of this data. Those functions are meant to be fast, one way, deterministic.
 

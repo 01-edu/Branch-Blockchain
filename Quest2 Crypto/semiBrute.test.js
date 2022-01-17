@@ -1,5 +1,5 @@
-const { strictEqual } = require("assert")
-const { createContext } = require("vm")
+// const { strictEqual } = require("assert")
+// const { createContext } = require("vm")
 
 // /*/ // ⚡
 setup = function () {
