@@ -1,0 +1,17 @@
+## Token Sale
+
+One way to distribute our token is to sell it. We will set a fixed price for each token. The tokens will have to be send to the Smart Contract by their owner initally. 
+
+### Instructions
+
+- Create a Smart Contract `TokenSale`
+
+- The contract imports MinimalToken
+
+- Create a `constructor` function that takes as parameter the address of a `MinimalToken` and the price of a token (in wei).
+
+- Create a public payable function `buy()` that sends to the buyer token proportionnaly to the value send.
+
+### Resources
+
+- [solidity : import"](https://docs.soliditylang.org/en/v0.8.4/layout-of-source-files.html)
