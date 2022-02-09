@@ -1,31 +1,41 @@
 ## Send Transaction
 
+The purpose of this exercise is to send a simple Bitcoin transaction locally using the command line. As we use new tools this exercise is guided
+
 ### Instructions
 
-- Create manually a wallet on **Bitcoin testnet**
 
-- Get testnet Bitcoin on a faucet (You might have to try several)
+- First you need to install a Bitcoin node. There are two solutions : 
+	- Use a preconfigured image for virtual machine such as [cryptotux](https://cryptotux.org/)
+	- Install manually by downloaning and installing the Bitcoin Core software from their [website](https://bitcoin.org/en/download) or [github](https://github.com/bitcoin/bitcoin/releases). 
 
-- Send a transaction of 0.00001691 bitcoins to any address (for instance 'mxavcCEHuJcKsCvuMhCqwN7W8SHN1bp3VL')
+- Launch Bitcoin core daemon on **regtest** network. You can do so with `bitcoind -regtest` assuming the executable is in your shell's path. 
+- Create manually a wallet and two addresses on **Bitcoin regtest**. You may do this by running the following commands
+	```bash
+	bitcoin-cli createwallet "testwallet"
+	bitcoin-cli getnewaddress
+	bitcoin-cli getnewaddress
+	```
+- Generate 101 blocks to get fresh bitcoins. You need 101 blocks as the Bitcoin you receive from mining are locked for 100 blocks. 
+You may use the following command `bitcoin-cli -regtest generatetoaddress 101  <your address>`
+
+- Send a transaction of 2.01 bitcoins to the second address.
+
+- List the last transactions `bitcoin-cli listtransactions`
   
-- Create a js file and store the hash of your transaction in a variable `txhash`
+- Create a js file and store the hash of your transaction in a variable `txid`. 
 
 ### Usage
 
 ```js
-const txHash = 'be3d0d245e7dce50964ac9157aee7e18a3828be11d89f72ee0bc3f76b526e5bb'
+
+const txid = 'be3d0d245e7dce50964ac9157aee7e18a3828e11d89f72ee0bc3f76b526e5bb'
 ```
 
 Congrats for your first Bitcoin transaction!
 
-### Hint
-
-The transaction must have been send in the last hour for the test to validate
 
 ### Notions
-
-- A cross platform wallet [bitpay wallet](https://bitpay.com/wallet/)
-- A Bitcoin explorer [bitcoin testnet explorer](https://blockstream.info/testnet/)
-- [faucet](https://kuttler.eu/en/bitcoin/btc/faucet/)
-- [faucet](https://bitcoinfaucet.uo1.net/)
-- [faucet](https://testnet-faucet.com/btc-testnet/)
+- A linux image with developer tools [cryptotux.org](https://cryptotux.org/)
+- Bitcoin core node [bitcoin.org](https://bitcoin.org/)
+- Send to address [reference](https://wbnns.github.io/bitcoin-dev-docs/reference/rpc/sendtoaddress.html)
