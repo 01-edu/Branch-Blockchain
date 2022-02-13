@@ -4,8 +4,8 @@ We will create a basic swap smart contract that will allow two users, Alice and 
 
 ### Instructions
 
-- Create a `MinimalTokenAllowance` contract as defined before
-- Create a Smart Contract `BasicSwap` with a constructor that takes the address of Externally Owned Accounts. 
+- Create a `usableToken` contract as defined before
+- Create a Smart Contract `BasicSwap` with a constructor that takes the address of two Externally Owned Accounts. 
 - Create a function `swap(tokenA, AmountA, TokenB, AmountB)` that takes as parameters, two `MinimalTokenAllowance`contracts and amounts
     - The function checks that users gave the corresponding allowances to the smart contract
     - The function proceed to transfert the first amount in TokenA from Alice to Bob and the second amount from Bob to Alice

@@ -8,10 +8,10 @@ Today, We will start by creating a Minimal Token that provides the basic functio
 ### Mandatory
 1. [Minimal Token](minimalToken/README.md)
 2. [Token Sale](tokenSale/README.md)
-3. [Credit Allowances](creditAllowances/README.md)
+3. [Usable token](usableToken/README.md)
 4. [Basic Swap](basicSwap/README.md)
-5. [MinimalTokenEvents](MinimalTokenEvents/README.md)
 ### Optional
+5. [Eventful token](eventfulToken/README.md)
 6. [Transfers History](transfersHistory/README.md)
 
 
@@ -19,6 +19,6 @@ Today, We will start by creating a Minimal Token that provides the basic functio
 In this Quest, tests can be run with
 ```sh
 npm i 
-npx hardhat <exercice>.test.js
+npx hardhat test tests/<exercice>.test.js
 ```
 
