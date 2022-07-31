@@ -1,0 +1,38 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+        "indent": [
+            "error",
+            4
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": "off",
+        "semi": [
+            "error",
+            "never"
+        ],
+        "no-prototype-builtins": "off",
+        "no-unused-vars": ["error", {  "argsIgnorePattern": "params"}]
+    },
+    "globals": {
+        "setup": "writable",
+        "params": "readonly",
+        "tests": "writable",
+        "t": "writable",
+        "it": "readonly",
+        "describe": "readonly",
+        "before": "readonly",
+        "Buffer": "readonly"
+    }
+}

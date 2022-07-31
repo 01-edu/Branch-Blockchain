@@ -8,8 +8,8 @@ import { deepStrictEqual } from 'assert'
 import * as fs from 'fs'
 const { readFile, writeFile } = fs.promises
 // eval for nodejs code
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url)
 // const vm = require('vm')
 // import  * as vm from 'vm'
 
@@ -89,7 +89,7 @@ const main = async () => {
   const code = rawCode.replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim()
   if (code.includes('import')) fatal('import keyword not allowed')
 
-  const parts = test.split('// /*/ // ⚡')
+  const parts = test.split('// /*/ // ⚡jianyang')
   const [inject, testCode] = parts.length < 2 ? ['', test] : parts
   const combined = `${inject.trim()}\n${rawCode
     .replace(inject.trim(), '')
@@ -108,7 +108,7 @@ const main = async () => {
   const t = (f) => tests.push(f)
   eval(combined)
 
-  const ctx = (await ( setup && setup())) || {}
+  const ctx = (await (setup && setup())) || {}
   const tools = { eq, fail, wait, code, ctx }
   for (const [i, t] of tests.entries()) {
     try {
@@ -116,11 +116,11 @@ const main = async () => {
         throw Error('Test failed')
       }
     } catch (err) {
-      console.warn("\x1b[33m",`Test #${i} failed:\n${t.toString()}\n`, "\x1b[0m")
+      console.warn("\x1b[33m", `Test #${i} failed:\n${t.toString()}\n`, "\x1b[0m")
       fatal(stackFmt(err))//, url))
     }
   }
-  console.log("\x1b[32m",`\n✔ ${name} passed (${tests.length} tests)`, "\x1b[0m")
+  console.log("\x1b[32m", `\n✔ ${name} passed (${tests.length} tests)`, "\x1b[0m")
 }
 
 main().catch(err => fatal(err.stack))

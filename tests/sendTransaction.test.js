@@ -9,7 +9,7 @@ const t = (f) => tests.push(f)
 
 t(async () => {
 
-    const https = require('https');
+    const https = require('https')
     const API = 'https://api.blockcypher.com/v1/btc/test3/txs/'
     async function  retrieveTxValue(tH) {
         return new Promise((resolve) => {

@@ -8,3 +8,9 @@ dft*
 package-lock.json
 node_modules/
 .vscode
+
+build/
+artifacts/
+cache/
+coverage/
+coverage.json
