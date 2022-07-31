@@ -26,7 +26,11 @@ Each exercise requires a distinct Smart Contract.
 
 In this Quest, tests can be run with:
 
+```bash
+npm i
+npx hardhat test
 ```
-npm i # Once
+Individual tests can be run with 
+```bash
 npx hardhat test tests/<exercise>.test.js
 ```
