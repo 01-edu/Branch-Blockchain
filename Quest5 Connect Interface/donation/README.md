@@ -22,7 +22,7 @@ Pressing this button should send the amount inputted to the address `0x837F324FF
 
 ### Hint
 
-You will need to send ETH from the default accounts of the node to your random wallet. You could transfer funds using
+You will need to send ETH from the default accounts of the node to your random wallet. 
 
 ### Notions
 
