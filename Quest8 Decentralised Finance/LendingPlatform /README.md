@@ -1,9 +1,9 @@
 ## Lending platform
 
-We will create a platforms that allow borrowers tokens from lenders in a decentralised manner around a volatile and a stable token. Lenders will earn a fixed yield of 5% per year. 
+We will create a platforms that allow borrowers tokens from lenders in a decentralized manner around a volatile and a stable token. Lenders will earn a fixed yield of 5% per year. 
 
 ### Instructions
-- Create or import an implementation of the ERC20 standard mandatory functions with additionaly the `name()` optional function. (you can add other optional functions).
+- Create or import an implementation of the ERC20 standard mandatory functions with additionally the `name()` optional function. (you can add other optional functions).
 - Create a script and the documentation to deploy instances of this ERC20 implementation:
     - `Volatile`
     - `Stable`
@@ -15,7 +15,7 @@ We will create a platforms that allow borrowers tokens from lenders in a decentr
     - Add a function `setPrice(uint)` that allow to set the value of `Volatile` in `Stable`
 
 - Create a `LendingPlatform` smart contract with : 
-    - A constructor that takes in parameters the addresses the tokens mentionned above
+    - A constructor that takes in parameters the addresses the tokens mentioned above
     - A function `registerOracle(address)` that identifies the oracle used
     - A function `depositStable(amount)` that allows a lender to deposit the amount in the Stable token. In exchange, the lender will receive the corresponding amount in lStable. 
     - A function `depositVolatile(amount)` that allows an user to deposit the amount in the Volatile . In exchange, the lender will receive the corresponding amount in lVolatile.

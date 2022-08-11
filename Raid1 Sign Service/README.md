@@ -24,12 +24,12 @@ This section introduces the service and redirects to the two other pages
     - *Optionally : The document can be stored in the database of your choice*
 - a button `verify` to check if a document has been stored previously. 
     - It hashes the document, reads if the smart contract contains it, and displays the data at which the document was added
-**Optionnally**
+**Optionally**
 - A retrieve section allows to recover a document from its hash. The document must have been stored
 
 ### Result
 
-The overall apparence can be basic but it should be clear and easy to use.
+The overall appearance can be basic but it should be clear and easy to use.
 
 Example of interface
 ```console

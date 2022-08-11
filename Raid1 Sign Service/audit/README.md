@@ -14,7 +14,7 @@
 
 ##### Serve the interface
 
-###### Does the interface include a title, a connnect & upload and an action section?
+###### Does the interface include a title, a connect & upload and an action section?
 
 ###### Does the interface allows to upload a document?
 
@@ -22,7 +22,7 @@
 
 ###### Does the action section include a sign, publish and verify button?
 
-### Functionnalities 
+### Functionalities 
 
 ###### Does the sign button trigger the wallet and display a signature of the document
 
@@ -32,4 +32,4 @@
 
 ### Bonus 
 
-###### +Does the page include a retrieve section that allows to download the document uploaded previoulsy?
+###### +Does the page include a retrieve section that allows to download the document uploaded previously?
