@@ -15,7 +15,11 @@ _+ 0.01 fee_
 
 ### Instructions
 
-Using a public bitcoin API of Bitcoin testnet, create a function `retrieveTxValue()` that takes as input a hash of a simple transaction, and returns an object with an array of inputs values and an array outputs values in this transaction.
+Using a local Bitcoin node RPC API, create a function `retrieveTxValue()` that takes as input a hash of a simple transaction, and returns an object with an array of inputs values and an array outputs values in this transaction.
+
+The Bitcoin node RPC interface is expected to be running with the following parameters:
+    rpcallowip=127.0.0.1
+    rpcport=18443
 
 ### Usage
 
