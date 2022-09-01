@@ -2,7 +2,11 @@
 
 ### Instructions
 
-Using a public bitcoin API of Bitcoin testnet, create a function `retrieveTxValue()` that takes as input a hash of a simple transaction, and returns the total value transferred in this transaction in bitcoins.
+Targeting a local bitcoin node, create a function `retrieveTxValue()` that takes as input a hash of a simple transaction, and returns the total value transferred in this transaction in bitcoins.
+
+The Bitcoin node RPC interface is expected to be running with the following parameters:
+    rpcallowip=127.0.0.1
+    rpcport=18443
 
 ### Usage
 
@@ -17,7 +21,6 @@ Internally, Bitcoin uses satoshis, 1 satoshi = 10^-8 bitcoin
 
 ### Notions
 
-- [blockcypher API](https://www.blockcypher.com/dev/bitcoin/#blockchain-api)
 - [Node.js https module](https://nodejs.org/api/https.html)
 - [Async function in Javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/async_function)
 - [satoshi](https://en.bitcoin.it/wiki/Satoshi_(unit))

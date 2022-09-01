@@ -4,9 +4,9 @@ You will send your first peer-to-peer transaction between two students.
 
 ### Instructions
 
-- Create manually a wallet on **Bitcoin testnet** 
+- Create manually an address on **Bitcoin testnet** using any wallet. You can use bitcoin-cli configured on testnet or any other wallet.
 
-- Get testnet Bitcoin on a faucet.
+- Get testnet Bitcoin from a faucet.
 
 - Send a transaction of 0.00001337 bitcoins to another student.
 

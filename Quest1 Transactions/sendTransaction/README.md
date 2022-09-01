@@ -1,13 +1,13 @@
 ## Send Transaction
 
-The purpose of this exercise is to send a simple Bitcoin transaction locally using the command line. As we use new tools this exercise is guided
+The purpose of this exercise is to send a simple Bitcoin transaction locally using the command line. As we use new tools this exercise is guided.
 
 ### Instructions
 
 
 - First you need to install a Bitcoin node. There are two solutions : 
 	- Use a preconfigured image for virtual machine such as [cryptotux](https://cryptotux.org/)
-	- Install manually by downloaning and installing the Bitcoin Core software from their [website](https://bitcoin.org/en/download) or [github](https://github.com/bitcoin/bitcoin/releases). 
+	- Install manually by downloading and installing the Bitcoin Core software from their [website](https://bitcoin.org/en/download) or [github](https://github.com/bitcoin/bitcoin/releases). 
 
 - Launch Bitcoin core daemon on **regtest** network. You can do so with `bitcoind -regtest` assuming the executable is in your shell's path. 
 - Create manually a wallet and two addresses on **Bitcoin regtest**. You may do this by running the following commands

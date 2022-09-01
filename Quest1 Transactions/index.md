@@ -18,11 +18,9 @@ You should not use any crypto with value for any exercise of the module. If you 
 ### Mandatory
 
 1. [sendTransaction](sendTransaction/README.md) _Send a Bitcoin transaction_
-2. [sendTransactionToPeer](sendTransactionToPeer/README.md) _send a bitcoin transaction to a peer
-3. [sendEthTransaction](sendEthTransaction/README.md) _Send a transaction to an address on Kovan testnet_
-4. [retrieveBlockDate](retrieveBlockDate/README.md) _get a block date_
-5. [retrieveTransactionValue](retrieveTransactionValue/README.md) _get the value of a transaction_
+2. [retrieveBlockDate](retrieveBlockDate/README.md) _get a block date_
+3. [retrieveTransactionValue](retrieveTransactionValue/README.md) _get the value of a transaction_
+4. [sendTransactionToPeer](sendTransactionToPeer/README.md) _send a bitcoin transaction to a peer
+5. [sendEthTransaction](sendEthTransaction/README.md) _Send a transaction to an address on Kovan testnet_
 ### Optional
 6. [retrieveTransactionInOut](retrieveTransactionInOut/README.md) _get inputs and outputs from a transaction_
-7. [twinAccounts](twinAccounts/README.md) _Equilibrate the balance and nounce of two accounts
-
