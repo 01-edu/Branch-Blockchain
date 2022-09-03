@@ -47,4 +47,5 @@ elif test -f "/app/test/${EXERCISE}".test.js; then
   fi 
 else 
   echo "Entrypoint> No suitable test found"
+  exit 1
 fi
