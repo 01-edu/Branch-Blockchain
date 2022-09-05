@@ -1,7 +1,6 @@
 ## Basic wallet
 
 _- Do you always look at it encoded ?_
-
 _- Well you have to, the image translators work for the construct program, but there is way too much information to decode the Matrix_
 
 ### Instructions
