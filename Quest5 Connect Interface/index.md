@@ -1,6 +1,6 @@
 ## Interface
 
-Today we will learn how to create basic interfaces. All those exercises consist in a single HTML page with Javasc. You will need an JavaScript Library, ethers.js and web3.js should be suitable. 
+Today we will learn how to create basic interfaces. All those exercises consist in a single HTML page with Javascript. You will need an Ethereum JavaScript Library, ethers.js and web3.js should be suitable. 
 
 ## Content
 ### Mandatory

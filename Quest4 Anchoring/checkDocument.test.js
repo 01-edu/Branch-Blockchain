@@ -23,7 +23,7 @@ describe("Check document", function() {
       let timestamp = await checkDocument("hello", 0xfc134a6da246ce3f3eb6b2bf4581616c31ba701c87afc60ee3c612593cb27b64)
       expect(timestamp).to.be.equal(0)
     });
-    it("Should not change significally the sender balance", async function() {
+    it("Should not change significantly the sender balance", async function() {
       const provider = new ethers.providers.JsonRpcProvider();//http://localhost:8545
       const signerAddress = await provider.getSigner().getAddress()
       let initialBalance = await provider.getBalance(signerAddress)
