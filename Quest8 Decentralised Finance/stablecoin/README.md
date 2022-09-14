@@ -16,7 +16,7 @@ Then, we will create a stablecoin smart contract. It will allow user to mint and
 - Add a function `mint(amount)` that allow the user to mint the stablecoin for up to half the value deposited in Ether
 - add a `burn(amount)` function that allows any user to burn the corresponding value in stablecoin providing the user has a sufficient position.
 
-And, the clef de voute, we allow any user to punish users that issued more tokens than they should.
+And, the "clef de voute", we allow any user to punish users that issued more tokens than they should.
 - Add a `liquidate(user)` function that allows any user to liquidate the position of any user which current position is below this 1:2 ratio. The liquidator must provide the corresponding value in stablecoin and receives 80% of the outstanding deposit in Ether.
 
 

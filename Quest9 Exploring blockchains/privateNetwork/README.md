@@ -7,11 +7,13 @@ Besu in an alternative Ethereum client that is compatible with Ethereum mainnet.
 - It must use the QBFT consensus algorithm
 - Chain id must be set to 2222
 - blocktime must be set to 2 seconds
-- the Lending Platform must be deployed on the network
-- The keys to the owner(s) of the Lending Platform must be stored in a file called `keys.json`
-- A script must be provided to launch the network using the data in the node folders
+- the napping cats platform must be deployed on the network
+- The keys to the owner(s) of the napping cats Platform must be stored in a file called `keys.json`
+- A script must be provided to launch the network using the data in the node folders and deploy napping cats
+- Documentation must explain how to launch the network and the showcase web interface. 
 
 The final project should have the following structure
+
 ```console
 Network/
 ├── NodeA
@@ -23,6 +25,7 @@ Network/
 ├── NodeD
 |   └──data
 ├── Contracts
+├── Web
 ├ genesis.json
 ├ launch.sh
 ├ README.md

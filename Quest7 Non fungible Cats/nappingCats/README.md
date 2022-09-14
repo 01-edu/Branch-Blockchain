@@ -1,6 +1,6 @@
 ## Napping Cats
 
-In this exercice we will create a basic NFT smart contract, and use it to instantiate an NFT collection with some custom functoins
+In this exercise we will create a basic NFT smart contract, and use it to instantiate an NFT collection with some custom functions
 
 ### Instructions
 
@@ -8,10 +8,10 @@ In this exercice we will create a basic NFT smart contract, and use it to instan
 - Create a smart contract `basicNFT`
 - Create a `constructor` function that takes a string that will be used as a name for the NFT. 
 - Create a public function `ownerOf()` that associate a token to the address of its owner
-- Create a public function `TokenURI()` that associate a token to a ressource
-- Create a function `transfer(uint, address)` that takes as parameters an identifier (a positive integer) and an address to allow the owner of a NFT to transfert it.
+- Create a public function `TokenURI()` that associate a token to a resource
+- Create a function `transfer(uint, address)` that takes as parameters an identifier (a positive integer) and an address to allow the owner of a NFT to transfer it.
 
-*Optionally you can implement or reuse the full ERC721 sandard*
+*Optionally you can implement or reuse the full ERC721 standard*
 
 #### Napping cats
 - Create a smart contract `Napping Cats` that inherits from basicNFT
@@ -24,7 +24,7 @@ In this exercice we will create a basic NFT smart contract, and use it to instan
     - For the initial sale price defined by the constructor for new tokens
     - For the listed price by the function listToken
 
-*Optionnaly, the price for new tokens is an auction. It starts at 100x of the initial sale price or the last paid price for a new token and decreases over time to reach 0 after 24 hours.*
+*Optionally, the price for new tokens is an auction. It starts at 100x of the initial sale price or the last paid price for a new token and decreases over time to reach 0 after 24 hours.*
 
 ### Resources
 - [ERC721 standart](https://eips.ethereum.org/EIPS/eip-721)
