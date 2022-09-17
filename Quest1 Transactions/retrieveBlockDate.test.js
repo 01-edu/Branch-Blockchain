@@ -1,37 +1,36 @@
+// node test
+DEBUG = true
+const { expect } = require("chai");
+const Client = require('bitcoin-core');
+const  {retrieveBlockDate}= require("./retrieveBlockDate.sl.js")
 
+describe("retrieve block date", function() { 
+  let client, hashLatest, timeLatest
 
-// /*/ // ⚡
+  beforeEach( async function () {
+    client = new Client({ 
+      network: 'regtest', 
+      username: 'leeloo', 
+      password: 'multipass', 
+      port: 18443 
+    })
+    hashLatest = await client.getBestBlockHash()
+    let block = await client.getBlock(hashLatest)
+    timeLatest = block.time
+    if(DEBUG){
+      dateLatest = new Date(timeLatest*1000)
+      console.log("hashLatest", hashLatest)
+      console.log("timeLatest", timeLatest)     
+      console.log("dateLatest", dateLatest)
+    }
+  })
 
-setup =  function (params) {
-
-} 
-
-const t = (f) => tests.push(f)
-
-t(async () => {
-    let d = await retrieveBlockDate(1881467)
-    let dRef = new Date('2020-11-05T20:18:48.000Z')
-    return d.getTime() == dRef.getTime()
+  it("latest block is ok", async function() {
+    let retrievedTime = await retrieveBlockDate(hashLatest)
+    if(DEBUG){
+      dateRetrievedTime = new Date(retrievedTime*1000)
+      console.log("dateRetrie", dateRetrievedTime)
+    }
+    expect(retrievedTime).to.equal(timeLatest)
+  })
 })
-
-t(async () => {
-    let d = await retrieveBlockDate(1)
-    let dRef = new Date('2011-02-02T23:22:08.000Z')
-    return d.getTime() == dRef.getTime()
-})
-
-// Alternative 
-// t( () => {
-//     return  retrieveBlockDate(1881467)
-//         .then( d => {
-//             let dRef = new Date('2020-11-05T20:18:48.000Z')
-//             return d.getTime() == dRef.getTime()
-//         })
-//     }
-// )
-
-
-Object.freeze(tests)
-
-
-
