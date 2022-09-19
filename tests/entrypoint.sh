@@ -19,7 +19,12 @@ fi
 if test -f "/app/${EXERCISE}".test.js; 
 then
   echo ">> Node test <<"
-  node /app/test.mjs "/jail/student" "${EXERCISE}"
+  # node /app/test.mjs "/jail/student" "${EXERCISE}"
+  bitcoind&
+  # Only for local testing purposes 
+  cp /app/package.json /jail
+  ln -s /app/node_modules/ /jail/node_modules
+  npx mocha "/app/tests/${EXERCISE}.test.js" 
 
 elif test -f "/app/test/${EXERCISE}".test.js; then
   echo ">> Solidity (HH) test <<"
