@@ -1,55 +1,14 @@
+let assert = require('assert');
+const { expect } = require("chai");
+let {txid} = require('./sendTransaction.sl.js');
 
-// /*/ // ⚡
+function isSha256(h) {
+    const regex = /^[a-f0-9]{64}$/gi
+    return regex.test(h)
+}  
 
-setup =  function (params) {
-
-} 
-
-const t = (f) => tests.push(f)
-
-t(async () => {
-
-    // Simplified test for sendTransaction 
-    function isSha256(h) {
-        const regex = /^[a-f0-9]{64}$/gi
-        return regex.test(h)
-    }
-    return isSha256(txid) 
-
-
-    // With internet access enabled
-
-    // const https = require('https');
-    // const API = 'https://api.blockcypher.com/v1/btc/test3/txs/'
-    // async function  retrieveTxValue(tH) {
-    //     return new Promise((resolve) => {
-    //         https.get(API+tH, (resp) => {
-    //             let data = ''
-            
-    //             resp.on('data', (chunk) => {
-    //                 data += chunk
-    //             })
-            
-    //             resp.on('end', () => {
-    //                 let received = Date.parse(JSON.parse(data).received)
-    //                 let dateNow = new Date
-    //                 let value = JSON.parse(data).outputs[0].value
-    //                 if(Math.abs(received-dateNow) < 3600*1000*z) {
-    //                     resolve(value)
-    //                 } else {
-    //                     resolve(0)// arbitrary value to fail test
-    //                 }
-    //             })
-            
-    //         }).on("error", (err) => {
-    //             console.log("Error: " + err.message)
-    //         })
-    //     })
-    // }
-    // return await retrieveTxValue(txHash) == 1691
-})
-
-Object.freeze(tests)
-
-
-
+describe('Send transaction', function () {
+  it('Should return a valid txid', function () {
+    assert.ok(isSha256(txid));
+  });
+});
