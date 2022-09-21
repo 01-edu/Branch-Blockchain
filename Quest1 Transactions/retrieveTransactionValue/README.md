@@ -2,17 +2,21 @@
 
 ### Instructions
 
-Targeting a local bitcoin node, create a function `retrieveTxValue()` that takes as input a hash of a simple transaction, and returns the total value transferred in this transaction in bitcoins.
+Targeting a local bitcoin node, create a function `retrieveTransactionValue()` that takes as input a hash of a simple transaction, and returns the total value transferred in this transaction in bitcoins. 
 
 The Bitcoin node RPC interface is expected to be running with the following parameters:
-    rpcallowip=127.0.0.1
-    rpcport=18443
+```bash
+rpcallowip=127.0.0.1
+rpcport=18443
+rpcuser=leeloo
+rpcpassword=multipass
+```
 
 ### Usage
 
 ```js
-txHash = 'd030023d96b9170af9ec2fe5d9b62a5eacbcbf144c68f3f45d68bca72d1d3649'
-retrieveTxValue(txHash) // Expected : 0.001
+const {retrieveTxValue} = require('./retrieveTransactionValue.js')
+retrieveTxValue('d030023d96b9170af9ec2fe5d9b62a5eacbcbf144c68f3f45d68bca72d1d3649') // Expected : 0.001
 ```
 
 ### Hint

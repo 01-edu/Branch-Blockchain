@@ -1,28 +1,33 @@
+// node test
+//TODO might need to check trigger tx
+const { expect } = require("chai");
+const Client = require('bitcoin-core');
+const  {retrieveTransactionValue}= require("./retrieveTransactionValue.sl.js")
 
+describe("retrieve transaction value", function() { 
+  let client, hashLatest, timeLatest, txLatest
 
-// /*/ // ⚡
+  beforeEach( async function () {
+    client = new Client({ 
+      network: 'regtest', 
+      username: 'leeloo', 
+      password: 'multipass', 
+      port: 18443 
+    })
+    // client.generateToAddress(101, "bcrt1qznrqryhtzr66tp8uzrxsuh58mn2vpfmjxpnxgz")
+    hashLatest = await client.getBestBlockHash()
+    let block = await client.getBlock(hashLatest)
+    txLatest = block.tx[0]
+  })
 
-setup =  function (params) {
-
-} 
-
-const t = (f) => tests.push(f)
-
-// init are unique
-t(async () => {
-    let txValue = await retrieveTxValue('d030023d96b9170af9ec2fe5d9b62a5eacbcbf144c68f3f45d68bca72d1d3649') 
-    return txValue == 0.18075094
+  it("latest tx is ok", async function() {
+    let lastTX = await client.getTransaction(txLatest)//getVout
+    let value = 0
+    lastTX.details.forEach(
+        x => value += x.amount
+    )
+    let retrievedValue = await retrieveTransactionValue(txLatest)
+    expect(retrievedValue).to.equal(value)
+  })
 })
-t(async () => {
-    let txValue = await retrieveTxValue('39c5ddccadd616891d448d2aa284fb677e8025e0e224667543ebb8557da2046a') 
-    return txValue == 0.76264991
-})
-t(async () => {
-    let txValue = await retrieveTxValue('f44c4ed8faba33ad853e88471aba3d35dd3256c13eec270d74a6b2cf277b60b3') 
-    return txValue == 1.48260121
-})
-
-Object.freeze(tests)
-
-
 
