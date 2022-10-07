@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ## Debugging info 
-DEBUG=false
+DEBUG=true
 
 if [ $DEBUG = true ]; then
   echo ">>> Entrypoint <<<"
@@ -20,11 +20,16 @@ if test -f "/app/${EXERCISE}".test.js;
 then
   echo ">> Node test <<"
   # node /app/test.mjs "/jail/student" "${EXERCISE}"
-  bitcoind&
+  bitcoind -conf=/home/xa/.bitcoin/bitcoin.conf&
+  sleep 10
+  if [ $DEBUG = true ]; then
+    cat ~/.bitcoin/bitcoin.conf
+  fi 
+
   # Only for local testing purposes 
   cp /app/package.json /jail
   ln -s /app/node_modules/ /jail/node_modules
-  npx mocha "/app/tests/${EXERCISE}.test.js" 
+  npx mocha "/app/${EXERCISE}.test.js" 
 
 elif test -f "/app/test/${EXERCISE}".test.js; then
   echo ">> Solidity (HH) test <<"
