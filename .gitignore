@@ -1,16 +1,22 @@
+# Draft files (to be removed)
 *.sl.*
 dft*
 *.sol
 
+## Potential key files
 *.txt
 *.pem
+*key*
 
+## Typical unecessary files & folders
 package-lock.json
 node_modules/
 .vscode
 
+## build folders & files
 build/
 artifacts/
 cache/
 coverage/
 coverage.json
+bin/
