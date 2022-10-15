@@ -15,18 +15,13 @@ RUN bitcoinCoreVersion="23.0"; wget -q "https://bitcoincore.org/bin/bitcoin-core
 # NB: default ports on regtest are 18443 RPC and 18444 P2P
 # Details at https://github.com/cryptotuxorg/cryptotux/blob/master/install/bitcoin.sh
 
-## Foundry 
-# RUN add-apt-repository ppa:ubuntu-mozilla-security/rust-next && \
-# 		apt-get update && \
-# 		apt-get install cargo -y && \
-# 		curl https://raw.githubusercontent.com/gakonst/foundry/master/foundryup/install | bash && \
-# 		/root/.foundry/bin/foundryup
-
+## Installing npm modules
 RUN npm install -g npm
 WORKDIR /app
-COPY . .
+COPY package.json .
 RUN npm install
 
+## Preparing a Bitcoin node
 RUN useradd xa
 USER xa
 WORKDIR /home/xa
@@ -34,4 +29,10 @@ RUN ls -la
 RUN mkdir -p ~/.bitcoin; echo 'txindex=1\nregtest=1\nserver=1\nrest=1\nrpcallowip=127.0.0.1\nrpcuser=leeloo\nrpcpassword=multipass\nfallbackfee=0.00000003'> ~/.bitcoin/bitcoin.conf
 RUN bitcoind -daemon; sleep 5; bitcoin-cli createwallet "testwallet"; address=`bitcoin-cli getnewaddress`; bitcoin-cli generatetoaddress 101 $address; bitcoin-cli stop
 
+USER root
+WORKDIR /app
+COPY . .
+RUN chmod +x /app/entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]
+
+
