@@ -16,8 +16,8 @@ RUN bitcoinCoreVersion="23.0"; wget -q "https://bitcoincore.org/bin/bitcoin-core
 # Details at https://github.com/cryptotuxorg/cryptotux/blob/master/install/bitcoin.sh
 
 ## Installing npm modules
-RUN npm install -g npm
 WORKDIR /app
+RUN npm install -g npm
 COPY package.json .
 RUN npm install
 
@@ -25,7 +25,6 @@ RUN npm install
 RUN useradd xa
 USER xa
 WORKDIR /home/xa
-RUN ls -la
 RUN mkdir -p ~/.bitcoin; echo 'txindex=1\nregtest=1\nserver=1\nrest=1\nrpcallowip=127.0.0.1\nrpcuser=leeloo\nrpcpassword=multipass\nfallbackfee=0.00000003'> ~/.bitcoin/bitcoin.conf
 RUN bitcoind -daemon -daemonwait; bitcoin-cli createwallet "testwallet"; address=`bitcoin-cli getnewaddress`; bitcoin-cli generatetoaddress 101 $address; bitcoin-cli stop
 
