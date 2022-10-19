@@ -44,7 +44,8 @@ const eq = (a, b) => {
   return true
 }
 
-const name = process.argv[3]
+// Modified for the online environment
+const name = process.argv[2]
 const fatal = (...args) => {
   console.error(...args)
   process.exit(1)
@@ -76,7 +77,7 @@ const stackFmt = (err, url) => {
 
 const main = async () => {
   const [test, rawCode] = await Promise.all([
-    read(joinPath(root, `${name}.jtest.js`), 'test'),
+    read(joinPath('/app/mjs', `${name}.test.js`), 'test'),
     // Local version XL
     // read(joinPath(root, `${name}.js`), 'student solution'),
     // Prod XL

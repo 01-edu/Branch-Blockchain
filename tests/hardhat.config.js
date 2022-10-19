@@ -34,7 +34,7 @@ module.exports = {
     solidity: expectedSolcVersion,
 
     paths: {
-        // root: "/jail",
+        root: "/jail",
         sources: "./student",
         tests: "./test",
         cache: "./cache",
