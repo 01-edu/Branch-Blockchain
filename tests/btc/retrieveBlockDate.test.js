@@ -12,7 +12,7 @@ describe("retrieve block date", function() {
       network: 'regtest', 
       username: 'leeloo', 
       password: 'multipass', 
-      port: 18443 
+      port: 18443 //18445
     })
     hashLatest = await client.getBestBlockHash()
     let block = await client.getBlock(hashLatest)
