@@ -1,18 +1,16 @@
-#!/bin/sh
+#!/bin/bash
+# Changed to bash as [] as a test might be a bashism. To be checked later
 
-## Debugging info 
-DEBUG=true
-
-if [ $DEBUG = true ]; then
-  echo ">>> Entrypoint <<<"
-  echo "    User" $(whoami) $USER
-  echo "    Path:" $PATH
-  echo "    Exercise: $EXERCISE"
-  echo "    Node: $(node --version)"  
-  tree /jail
+# This script is expected to run in the docker environment provided in the Dockerfile. 
+# It can be run in this environment with 
+# `DEBUG=false EXERCISE=retrieveBlockDate ./entrypoint.sh`
+CONTENT_FOLDER=/app
+# Debugging info 
+if [ $DEBUG ]; then
+  /app/infos.sh
   set -x
-else 
-  set -e
+# else 
+#   set -e
 fi
 
 # Base files are available
