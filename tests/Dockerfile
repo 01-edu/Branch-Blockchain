@@ -11,7 +11,12 @@ RUN curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && \
     apt-get install solc nodejs -y
 
 ## Bitcoin node
-RUN bitcoinCoreVersion="23.0"; wget -q "https://bitcoincore.org/bin/bitcoin-core-$bitcoinCoreVersion/bitcoin-$bitcoinCoreVersion-x86_64-linux-gnu.tar.gz"; tar xzf "bitcoin-$bitcoinCoreVersion-x86_64-linux-gnu.tar.gz"; mv bitcoin-$bitcoinCoreVersion/bin/* /usr/local/bin ; rm -rf bitcoin-$bitcoinCoreVersion/ ; rm "bitcoin-$bitcoinCoreVersion-x86_64-linux-gnu.tar.gz"
+RUN bitcoinCoreVersion="23.0"; \
+		wget -q "https://bitcoincore.org/bin/bitcoin-core-$bitcoinCoreVersion/bitcoin-$bitcoinCoreVersion-x86_64-linux-gnu.tar.gz"; \
+		tar xzf "bitcoin-$bitcoinCoreVersion-x86_64-linux-gnu.tar.gz"; \
+		mv bitcoin-$bitcoinCoreVersion/bin/* /usr/local/bin ; \
+		rm -rf bitcoin-$bitcoinCoreVersion/ ; \
+		rm "bitcoin-$bitcoinCoreVersion-x86_64-linux-gnu.tar.gz"
 # NB: default ports on regtest are 18443 RPC and 18444 P2P
 # Details at https://github.com/cryptotuxorg/cryptotux/blob/master/install/bitcoin.sh
 
