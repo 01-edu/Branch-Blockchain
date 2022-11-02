@@ -9,13 +9,13 @@ Create a function `hashFile(file)` that given the name of a file in the current 
 _textfile.txt_
 
 ```
-This is a text file
+Sometimes science is more art than science.
 ```
 
 ```js
 let hash = hashFile("textfile.txt")
 console.log(hash) 
-// expected result : a7a3d006d0b37872526f57529014864b1da514e9e00799eb4f8b71d080c5a9a6
+// expected result : 575e6ccc6aa3882344d97a8ebae4b7fc4852f9149ad14007d11164450f751eb1
 ```
 
 ### Notions
