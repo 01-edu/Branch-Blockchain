@@ -6,7 +6,7 @@ You will send your first peer-to-peer transaction between two students.
 
 - Create manually an address on **Bitcoin testnet** using any wallet. You can use bitcoin-cli configured on testnet or any other wallet.
 
-- Get testnet Bitcoin from a faucet.
+- Get testnet Bitcoin from a faucet (see below).
 
 - Send a transaction of 0.00001337 bitcoins to another student.
 
@@ -33,10 +33,10 @@ exports.tx = {
 
 Congrats for your first real peer to peer Bitcoin transaction! 
 
-### Notions
+### Utilities
 
 - A cross platform multi-currency wallet [Bitpay wallet](https://bitpay.com/wallet/)
 - A Bitcoin explorer [bitcoin testnet explorer](https://blockstream.info/testnet/)
-- [faucet](https://kuttler.eu/en/bitcoin/btc/faucet/)
-- [faucet](https://bitcoinfaucet.uo1.net/)
-- [faucet](https://testnet-faucet.com/btc-testnet/)
+- [faucet 1](https://kuttler.eu/en/bitcoin/btc/faucet/)
+- [faucet 2](https://bitcoinfaucet.uo1.net/)
+- [faucet 3](https://testnet-faucet.com/btc-testnet/)
