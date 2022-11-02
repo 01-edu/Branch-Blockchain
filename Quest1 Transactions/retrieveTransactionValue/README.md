@@ -16,7 +16,7 @@ rpcpassword=multipass
 
 ```js
 const {retrieveTxValue} = require('./retrieveTransactionValue.js')
-retrieveTxValue('d030023d96b9170af9ec2fe5d9b62a5eacbcbf144c68f3f45d68bca72d1d3649') // Expected : 0.001
+retrieveTxValue('d030023d96b9170af9ec2fe5d9b62a5eacbcbf144c68f3f45d68bca72d1d3649') // Expected : 50
 ```
 
 ### Hint
