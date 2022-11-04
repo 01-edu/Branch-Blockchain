@@ -8,7 +8,7 @@ It is now time to create our first token. We will start with a minmal implementa
 
 - Create a `constructor` function that takes a positive number as parameter and give an initial balance of tokens to the contract deployer. 
 
-- Create a public function `balanceOf()` to retrieve the balance of each user
+- Create a public function `balanceOf(address)` to retrieve the balance of each user given an address
 
 *Hint: You can declare a variable public to have an implicit public getter function of the same name.*
 
