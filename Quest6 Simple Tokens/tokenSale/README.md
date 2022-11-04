@@ -10,7 +10,7 @@ One way to distribute our token is to sell it. We will set a fixed price for eac
 
 - Create a `constructor` function that takes as parameter the address of a deployed `MinimalToken` and the price of a token (in wei).
 
-- Create a public payable function `buy()` that sends to the buyer token proportionnaly to the value send.
+- Create a public payable function `buy()` that sends to the buyer token proportionally to the value send.
 
 - Create a public function `getPrice()` that returns the price of the token.
 
