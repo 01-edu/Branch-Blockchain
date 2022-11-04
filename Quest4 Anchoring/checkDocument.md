@@ -9,7 +9,7 @@ Write a node script that exports the function `checkDocument()` that :
 - returns the date, as a unix timestamp, that the document was added to the blockchain if the transaction id and the string match and returns 0 otherwise
 
 ```js
-function checkDocument(txID, text) {
+function checkDocument(text, txID) {
     //...
 }
 module.exports = checkDocument
