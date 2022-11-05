@@ -7,7 +7,7 @@ First, we will create a simple stablecoin, following the ERC20 standart and an o
 ## Content
 1. [stablecoin](stablecoin/README.md)
 2. [Lending Platform](lendingPlatform/README.md)
-3. [Test and coverage](testAndCoverage/README.md)
+3. [Test and coverage](testsAndCoverage/README.md)
 
 ## Integration
 -> Audited
