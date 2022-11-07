@@ -8,7 +8,7 @@ We will now be able to display our NFT collection on a website and allow user to
 - Create a webpage index.html that connects to the napping Cats smart contract and displays the corresponding URIs as a table
 - Add a button to connect a wallet. 
 - Offer a buy button connected to the buyToken
-- * optionally : the buy button display the current price of this specific token
+- *optionally : the buy button display the current price of this specific token*
 - Once the wallet is connected, offer a sell token under the tokens owned by the user 
     - The button should open a modal or include an input field to give a listing price. 
 - provide a script and a guide to deploy the smart contract and serve the webpage
