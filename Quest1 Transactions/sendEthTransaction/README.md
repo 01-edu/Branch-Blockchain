@@ -1,6 +1,6 @@
 ## Send Eth Transaction
 
-You will create your first transaction on Ethereum using one of its testnets. We recommend Goerli
+You will create your first transaction on Ethereum using one of its testnets. We recommend Goerli as it is the most commonly used testnet, but you can use any other testnet.
 
 ### Instructions
 
@@ -19,7 +19,6 @@ exports.txid = '0xf02c4a1487aa2e45fc2c77cb5a28713a1474d86d5f4292b264875ccc5da82b
 ```
 
 ### Notions
-
-- A cross platform multi-currency wallet [Bitpay wallet](https://bitpay.com/wallet/)
-- A cross platform Ethereum only wallet [MetaMask](https://metamask.io/)
+- A full list of Ethereum compatible wallets [ethereum wallets](https://ethereum.org/en/wallets/find-wallet/)
+- The commonly used wallet for development [MetaMask](https://metamask.io/)
 - Find a [goerli faucet](https://letmegooglethat.com/?q=goerli+faucet)

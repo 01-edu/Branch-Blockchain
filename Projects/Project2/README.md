@@ -1,5 +1,6 @@
-
 # A payment channel solution
+
+*I don't respect therapy, because I'm a scientist. Because I invent, transform, create, and destroy for a living, and when I don't like something about the world, I change it. - Rick Sanchez*
 
 To overcome the scalability problem, two types of solutions have been devised. On the one hand the state and payment channels (_payment channels _and _state channels_) and on the other hand the secondary chains (_sidechains)_ whose units of value are guaranteed by the main network. 
 
