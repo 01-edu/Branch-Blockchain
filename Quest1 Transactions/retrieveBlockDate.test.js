@@ -1,5 +1,3 @@
-// node test
-DEBUG = true
 const { expect } = require("chai");
 const Client = require('bitcoin-core');
 const  {retrieveBlockDate}= require("./retrieveBlockDate.sl.js")
@@ -29,7 +27,7 @@ describe("retrieve block date", function() {
     let retrievedTime = await retrieveBlockDate(hashLatest)
     if(DEBUG){
       dateRetrievedTime = new Date(retrievedTime*1000)
-      console.log("dateRetrie", dateRetrievedTime)
+      console.log("dateRetrieved", dateRetrievedTime)
     }
     expect(retrievedTime).to.equal(timeLatest)
   })
