@@ -10,7 +10,7 @@ Objects:
 - Define the following element of our postal network:
     - 'Parcels', of type assets, which include a destination (a string), a current address (a string) and a status
     - 'Transport' a transaction which allows the address of the parcel to be changed a package
-
+ ￼
 Functionalities:
 - Allow the creation of users, postal employees, that can create and modify parcels. 
 - Enable tracking of the status of the parcel: Good, Damaged or Destroyed. The state is saved in the package and a transaction allows this state to be modified. The transaction verifies that changes are consistent (state can go only one way... )
