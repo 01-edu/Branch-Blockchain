@@ -7,14 +7,13 @@ Today we will learn how to create basic interfaces. All those exercises consist 
 ## Content
 ### Mandatory
 1. [localNodeInfo](localNodeInfo/README.md)
-2. [What's my chain again?](whatsMyChainAgain/README.md)
-3. [Random wallet](randomWallet/README.md)
-4. [Donation](donation/README.md)
-5. [Connect to MetaMask](connectToMetaMask/README.md)
-6. [Tip](tip/README.md)
+2. [Random wallet](randomWallet/README.md)
+3. [Donation](donation/README.md)
+4. [Connect to MetaMask](connectToMetaMask/README.md)
+5. [Tip](tip/README.md)
 
 ### Optional
-7. [Read a Secret](readSecret/README.md)
+6. [Read a Secret](readSecret/README.md)
 
 
 ## Integration
