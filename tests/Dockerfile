@@ -2,7 +2,11 @@ FROM ubuntu:focal
 
 ## Base tools
 RUN apt-get update && \
-		apt-get install software-properties-common apt-utils curl wget tree sudo -y 
+RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+	apt-get install -y --no-install-recommends ./google-chrome-stable_current_amd64.deb libxss1  && \
+	rm google-chrome-stable_current_amd64.deb
+RUN groupadd -r xa && useradd -rm -u 1000 -g xa -G audio,video xa
+
 
 ## Node & Ethereum (changes frequently)
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && \

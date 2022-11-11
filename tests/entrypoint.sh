@@ -59,6 +59,18 @@ elif test -f "/app/sol/$EXERCISE.test.js"; then
     npx hardhat test "/jail/test/${EXERCISE}.test.js"
   fi 
 
+# # Interface related tests
+elif test -f "/app/web3/${EXERCISE}".test.js; then
+  [ $DEBUG ] && ( echo ">> Web3 interface test <<" )
+  mkdir -p /jail/test
+  cp /app/hardhat.config.js /jail/
+  cp "/app/web3/${EXERCISE}.test.js" /jail/test
+
+  timeout 5s npx hardhat node& 
+  # pid=$!
+  sleep 2
+
+  npx hardhat test "/jail/test/${EXERCISE}.test.js" 
 # Failure
 else 
   echo "Entrypoint> No suitable test found for $EXERCISE"
