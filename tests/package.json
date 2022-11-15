@@ -1,16 +1,25 @@
 {
+  "name": "01branch-blockchain",
+  "version": "1.0.0",
+  "description": "Repository for the blockchain branch content.",
+  "scripts": {
+    "test": "./runTests.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/01-edu/Branch-Blockchain.git"
+  },
+  "author": "Xavier Lavayssière",
   "devDependencies": {
-    "@nomiclabs/hardhat-ethers": "^2.0.4",
-    "@nomiclabs/hardhat-waffle": "^2.0.1",
-    "bitcoin-core": "^4.0.0",
-    "chai": "^4.3.4",
-    "eslint": "^8.15.0",
-    "ethereum-waffle": "^3.4.0",
-    "ethers": "^5.5.3",
+    "@nomiclabs/hardhat-ethers": "^2.2.1",
+    "bitcoin-core": "^4.1.0",
+    "chai": "^4.3.7",
+    "eslint": "^8.27.0",
+    "ethers": "^5.7.2",
     "express": "^4.18.2",
     "express-static": "^1.2.6",
-    "hardhat": "^2.8.2",
+    "hardhat": "^2.12.2",
     "mocha": "^10.1.0",
-    "puppeteer": "^19.2.0"
+    "puppeteer-core": "^19.2.2"
   }
 }

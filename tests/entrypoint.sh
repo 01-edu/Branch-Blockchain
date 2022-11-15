@@ -7,16 +7,16 @@
 CONTENT_FOLDER=/app
 # Debugging info 
 if [ $DEBUG ]; then
+  echo "▶️ Entrypoint script"
   /app/infos.sh
   set -x
-# else 
-#   set -e
+else 
+   set -e
 fi
 
 # Base files are available
 cp /app/package.json /jail
 ln -s /app/node_modules/ /jail/node_modules
-cp -r /root/.cache /jail
 
 # Distinct test environments are triggered depending in the test file folder
 
@@ -26,8 +26,14 @@ then
   [ $DEBUG ] && ( echo ">> Bitcoin test <<" )
   cp -r /home/xa/.bitcoin .
   # bitcoind -conf=/home/xa/.bitcoin/bitcoin.conf -datadir=/home/xa/.bitcoin -daemon -daemonwait 
-  bitcoind -daemon -daemonwait 
-
+  bitcoind -daemon -daemonwait -datadir=/jail/.bitcoin 
+  if [ $DEBUG ]; then
+    tree -C ~/.bitcoin
+    bitcoin-cli loadwallet "testwallet"
+    bitcoin-cli getbalance
+    bitcoin-cli listwallets
+    bitcoin-cli getblockchaininfo
+  fi
   npx mocha "/app/btc/${EXERCISE}.test.js"
 
 elif test -f "/app/js/$EXERCISE.test.js"; then
@@ -71,6 +77,7 @@ elif test -f "/app/web3/${EXERCISE}".test.js; then
   sleep 2
 
   npx hardhat test "/jail/test/${EXERCISE}.test.js" 
+
 # Failure
 else 
   echo "Entrypoint> No suitable test found for $EXERCISE"
