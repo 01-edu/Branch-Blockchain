@@ -2,3 +2,6 @@ student
 dft
 cache
 artifacts
+
+.eslintrc.json
+package-lock.json

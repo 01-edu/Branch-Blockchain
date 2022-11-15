@@ -1,15 +1,19 @@
 FROM ubuntu:focal
 
-## Base tools
+## Base tools (compiler, download tools, base libraries for chrome.)
 RUN apt-get update && \
+		apt-get install -y software-properties-common apt-utils curl wget tree sudo 
+	# gnupg ca-certificates procps are implicit dependencies required for chrome below
+
+## Install google chrome - optimised 
 RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
 	apt-get install -y --no-install-recommends ./google-chrome-stable_current_amd64.deb libxss1  && \
 	rm google-chrome-stable_current_amd64.deb
 RUN groupadd -r xa && useradd -rm -u 1000 -g xa -G audio,video xa
 
 
-## Node & Ethereum (changes frequently)
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - && \
+## Node & Ethereum
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && \
 		add-apt-repository ppa:ethereum/ethereum && \
     apt-get update && \
     apt-get install solc nodejs -y
@@ -25,22 +29,20 @@ RUN bitcoinCoreVersion="23.0"; \
 # Details at https://github.com/cryptotuxorg/cryptotux/blob/master/install/bitcoin.sh
 
 ## Installing npm modules
-WORKDIR /app
 RUN npm install -g npm
+USER xa 
+WORKDIR /app
 COPY package.json .
 RUN npm install
 
 ## Preparing a Bitcoin node
-RUN useradd xa
-USER xa
 WORKDIR /home/xa
 RUN mkdir -p ~/.bitcoin; echo 'txindex=1\nregtest=1\nserver=1\nrest=1\nrpcallowip=127.0.0.1\nrpcuser=leeloo\nrpcpassword=multipass\nfallbackfee=0.00000003'> ~/.bitcoin/bitcoin.conf
-RUN bitcoind -daemon -daemonwait; bitcoin-cli createwallet "testwallet"; address=`bitcoin-cli getnewaddress`; bitcoin-cli generatetoaddress 101 $address; bitcoin-cli stop
+RUN bitcoind -daemon -daemonwait; bitcoin-cli createwallet "testwallet"; address=`bitcoin-cli getnewaddress`; bitcoin-cli generatetoaddress 101 $address; bitcoin-cli getblockchaininfo; bitcoin-cli stop; sleep 2
+RUN bitcoind -daemon -daemonwait; bitcoin-cli loadwallet "testwallet"; address=`bitcoin-cli getnewaddress`; bitcoin-cli sendtoaddress "bcrt1qznrqryhtzr66tp8uzrxsuh58mn2vpfmjxpnxgz" 12 "Another tx" "anonymous";  bitcoin-cli generatetoaddress 1 $address; bitcoin-cli stop; sleep 2
 
-USER root
 WORKDIR /app
 COPY . .
+USER root
 RUN chmod +x /app/entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]
-
-
