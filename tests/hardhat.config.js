@@ -15,8 +15,7 @@ subtask(TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD, async (args, hre, runSuper) => {
             compilerPath,
             isSolcJs: false, // if you are using a native compiler, set this to false
             version: args.solcVersion,
-            // this is used as extra information in the build-info files, but other than
-            // that is not important
+            // this is used as extra information in the build-info files
             longVersion: "solc-linux-v" + expectedSolcVersion
         }
     }
@@ -24,8 +23,6 @@ subtask(TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD, async (args, hre, runSuper) => {
     // we just use the default subtask if the version is not this
     return runSuper()
 })
-
-// Ideally sources would be /jail/student. Might be improved XL
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
@@ -41,4 +38,3 @@ module.exports = {
         artifacts: "./artifacts"
     },
 }
-

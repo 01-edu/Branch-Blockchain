@@ -9,8 +9,6 @@ RUN apt-get update && \
 RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
 	apt-get install -y --no-install-recommends ./google-chrome-stable_current_amd64.deb libxss1  && \
 	rm google-chrome-stable_current_amd64.deb
-RUN groupadd -r xa && useradd -rm -u 1000 -g xa -G audio,video xa
-
 
 ## Node & Ethereum
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && \
@@ -27,6 +25,9 @@ RUN bitcoinCoreVersion="23.0"; \
 		rm "bitcoin-$bitcoinCoreVersion-x86_64-linux-gnu.tar.gz"
 # NB: default ports on regtest are 18443 RPC and 18444 P2P
 # Details at https://github.com/cryptotuxorg/cryptotux/blob/master/install/bitcoin.sh
+
+## Preparing user for runtime 
+RUN groupadd -r xa && useradd -rm -u 1000 -g xa -G audio,video xa
 
 ## Installing npm modules
 RUN npm install -g npm
