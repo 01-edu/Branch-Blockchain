@@ -25,5 +25,5 @@ Interface and deliverable
     - `change status`that can potentially change its status. 
 
 ### Resources
--[Hyperledger Fabric documentation](https://hyperledger-fabric.readthedocs.io/)
--[Chain code tutorials](https://hyperledger-fabric.readthedocs.io/en/release-2.0/chaincode4ade.html)
+* [Hyperledger Fabric documentation](https://hyperledger-fabric.readthedocs.io/)
+* [Chain code tutorials](https://hyperledger-fabric.readthedocs.io/en/release-2.0/chaincode4ade.html)

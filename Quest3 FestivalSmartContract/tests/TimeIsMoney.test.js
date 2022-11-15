@@ -31,7 +31,7 @@ describe("Time is Money - time aspect", function() {
       value: expValue,
     }
     await festival.connect(attendee).buyTicket(overrides)
-    await festival.addRemuneratedArtist(artist.address)
+    await festival.addPayedArtist(artist.address)
     await expect(festival.connect(artist).getPayed()).to.be.reverted
   })
 
@@ -40,7 +40,7 @@ describe("Time is Money - time aspect", function() {
     let date = Math.round(currDate.getTime() / 1000 - 86400 * 5)
     festival = await Festival.deploy(date);
     await festival.deployed();
-    await festival.addRemuneratedArtist(artist.address)
+    await festival.addPayedArtist(artist.address)
     const expValue = ethers.utils.parseEther("22")
     const overrides = {
       value: expValue,
@@ -64,12 +64,12 @@ describe("Time is Money - late money aspect", function() {
   })
 
   it("should add an artist", async function() {
-    await expect(festival.addRemuneratedArtist(artist.address)).to.not.be.reverted
+    await expect(festival.addPayedArtist(artist.address)).to.not.be.reverted
   })
 
 
   it("The artist should get payed ", async function() {
-    await festival.addRemuneratedArtist(artist.address)
+    await festival.addPayedArtist(artist.address)
     const expValue = ethers.utils.parseEther("22")
     const overrides = {
       value: expValue,
@@ -85,7 +85,7 @@ describe("Time is Money - late money aspect", function() {
       value: expValue,
     }
     await festival.connect(attendee).buyTicket(overrides)
-    await festival.addRemuneratedArtist(artist.address)
+    await festival.addPayedArtist(artist.address)
     await expect(festival.connect(artist).getPayed()).to.be.reverted
   });
   it("Artist not registered can't be payed", async function() {
@@ -102,7 +102,7 @@ describe("Time is Money - late money aspect", function() {
       value: expValue,
     }
     await festival.connect(attendee).buyTicket(overrides)
-    await festival.addRemuneratedArtist(artist.address)
+    await festival.addPayedArtist(artist.address)
     await festival.connect(artist).getPayed()
     await expect(festival.connect(artist).getPayed()).to.be.reverted
   });

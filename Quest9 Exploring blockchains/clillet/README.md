@@ -1,8 +1,9 @@
-# Raid 2 Wallet
+# Command Line Wallet
 
 The goal is to create a fully functional command line wallet for a blockchain of your choice. You can choose any of the major alternative blockchains: Solana, Tezos, Poladot, Cosmos... The executable `clillet` must follow and implement the help description below. Our wallet consists of the following subcommands
 - `generate` to generate a new wallet
 - `import <file>` to import a wallet from a file
+- `import <file>` to export the wallet to a file
 - `connect <endpoint>` to connect to an existing blockchain node
 - `balance` to list in the main currency and common tokens of the platform
 - `send <destination> <amount>` a high level command to send assets over the network. 
@@ -39,6 +40,7 @@ COMMANDS:
    connect <endpoint>            Connect to a blockchain node
    balance                       Get the balance for the current loaded wallet
    send <destination> <amount>   sends assets to a destination
+```
 
 ## Deliverable
 The project must provide an executable file that complies with the specifications
