@@ -11,6 +11,7 @@ describe('Remote node info', function() {
   let CHAINID 
   let signer
   let provider
+  let DEBUG=false
 
   before(async function() { 
     const app = require('express')();
@@ -22,7 +23,7 @@ describe('Remote node info', function() {
     await page.goto('http://127.0.0.1:3001/localNodeInfo.html'); 
 
     provider = new ethers.providers.JsonRpcProvider();
-    console.log(provider)
+    if (DEBUG) console.log(provider)
     BLOCKNUMBER = await provider.getBlockNumber()
     let netw = await provider.getNetwork()
     CHAINID = netw.chainId

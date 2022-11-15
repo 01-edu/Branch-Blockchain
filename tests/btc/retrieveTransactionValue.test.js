@@ -1,11 +1,10 @@
-// node test
-//TODO might need to check trigger tx
 const { expect } = require("chai");
 const Client = require('bitcoin-core');
 const  {retrieveTransactionValue}= require("/jail/student/retrieveTransactionValue.js")
 
 describe("retrieve transaction value", function() { 
   let client
+  let DEBUG=false
 
   beforeEach( async function () {
     client = new Client({ 
@@ -14,7 +13,6 @@ describe("retrieve transaction value", function() {
       password: 'multipass', 
       port: 18443 
     })
-    // client.generateToAddress(101, "bcrt1qznrqryhtzr66tp8uzrxsuh58mn2vpfmjxpnxgz")
   })
   
   it("Value of the latest coinbase is correct", async function() {
@@ -23,7 +21,7 @@ describe("retrieve transaction value", function() {
     let block = await client.getBlockByHash(hashLatest)
     let value = block.tx[0].vout[0].value //.txid
     let txLatest = block.tx[0].txid
-    console.table("🤓 block txs", block.tx)
+    if (DEBUG) console.table("🤓 block txs", block.tx)
     let retrievedValue = await retrieveTransactionValue(txLatest)
     expect(retrievedValue).to.equal(value)
   })
@@ -33,7 +31,8 @@ describe("retrieve transaction value", function() {
     console.assert(hashLatest!=null)
     let block = await client.getBlockByHash(hashLatest)
     let value = 0
-    for (const vout of block.tx[1].vout) { // expect a second transaction in the latest block (see dockefile)
+    // expect a second transaction in the latest block (see dockerfile)
+    for (const vout of block.tx[1].vout) { 
       value += vout.value
     }
     let txLatest = block.tx[1].txid

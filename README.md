@@ -8,7 +8,7 @@ Those subjects are progressive in difficulty, designed to learn the fundamental 
 - Quest 2: Learn fundamental cryptography 
 - Quest 3: Create a complete Smart Contract
 - Quest 4: Scripted interactions with the Ethereum blockchain
-- Quest 5: Create a complete Decentralised application
+- Quest 5: Create a complete decentralised application
 - Raid 1: Create a signing service
 - Quest 6: Create a first token
 - Quest 7: An NFT based DApp
@@ -17,9 +17,14 @@ Those subjects are progressive in difficulty, designed to learn the fundamental 
 - Raid 1: Create a tracking service
 
 ## Tests ⚙️
-Within the `tests/` folder, `runTests.sh` builds a docker image and run the test given as parameter or series of sample test from the docker image with options similar to the production environment. Solutions are expected to be in the `tests/student` folder (ignored by git).
+Within the `tests/` folder, `runTests.sh` builds a docker image and run a series of sample tests. Solutions are expected to be in the `tests/student` folder.
 ```shell
-./runTests.sh retrieveBlockDate
+./runTests.sh
+```
+
+It is also possible to run tests individually:
+```shell
+./runTests.sh retrieveBlockDate 
 ```
 
 ### Advanced commands

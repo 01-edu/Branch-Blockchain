@@ -23,8 +23,8 @@ docker rm $(docker ps -a -f status=exited -q)
 docker image prune -f
 
 echo "▶️ Docker build"
-docker build . -t blockchain --progress=plain 
-#docker build . -t blockchain  
+#docker build . -t blockchain --progress=plain 
+docker build . -t blockchain  
 
 # Variable that is dependent on the local environment
 LocalStudentFolder="$(pwd)/student"
@@ -41,14 +41,16 @@ else
 	# no specific test has been named. run all tests
 	echo "▶️ BTC test"
 	# -e DEBUG=true available
-	docker run $BaseOptions -e DEBUG=true -e EXERCISE=retrieveBlockDate blockchain:latest
+	docker run $BaseOptions -e EXERCISE=retrieveBlockDate blockchain:latest
 	synthesis "BTC 1"
 	docker run $BaseOptions -e EXERCISE=retrieveTransactionValue blockchain:latest
 	synthesis "BTC 2"
 
 	echo "▶️ JS test using test.mjs"
 	docker run $BaseOptions -e EXERCISE=hash160 blockchain:latest
-	synthesis "JS (test)"
+	synthesis "JS (test) 1"
+	docker run $BaseOptions -e EXERCISE=hashFile blockchain:latest
+	synthesis "JS (test) 2"
 
 	echo "▶️ JS test using Mocha"
 	docker run $BaseOptions -e EXERCISE=sendTransaction blockchain:latest

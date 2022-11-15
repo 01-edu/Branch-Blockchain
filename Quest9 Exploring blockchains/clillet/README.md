@@ -1,6 +1,6 @@
 # Raid 2 Wallet
 
-The goal of this raid is to create a fully functional command line wallet for a blockchain of your choice. You can choose any of the major alternative blockchains: Solana, Tezos, Poladot, Cosmos... The executable `clillet` must follow and implement the help description below. Our wallet consists of the following subcommands
+The goal is to create a fully functional command line wallet for a blockchain of your choice. You can choose any of the major alternative blockchains: Solana, Tezos, Poladot, Cosmos... The executable `clillet` must follow and implement the help description below. Our wallet consists of the following subcommands
 - `generate` to generate a new wallet
 - `import <file>` to import a wallet from a file
 - `connect <endpoint>` to connect to an existing blockchain node

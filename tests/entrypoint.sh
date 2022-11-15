@@ -1,31 +1,30 @@
 #!/bin/bash
-# Changed to bash as [] as a test might be a bashism. To be checked later
 
 # This script is expected to run in the docker environment provided in the Dockerfile. 
-# It can be run in this environment with 
-# `DEBUG=false EXERCISE=retrieveBlockDate ./entrypoint.sh`
+# It can be run in this environment with `DEBUG=false EXERCISE=retrieveBlockDate ./entrypoint.sh`
+
+## Constants
 CONTENT_FOLDER=/app
-# Debugging info 
+
+## Debugging info 
 if [ $DEBUG ]; then
-  echo "▶️ Entrypoint script"
+  echo ">>> Entrypoint script in debug mode <<<"
   /app/infos.sh
   set -x
 else 
    set -e
 fi
 
-# Base files are available
+## Base files for node and solidity tests
 cp /app/package.json /jail
 ln -s /app/node_modules/ /jail/node_modules
 
-# Distinct test environments are triggered depending in the test file folder
-
+## Distinct test environments are triggered depending in the test file folder
 if test -f "/app/btc/${EXERCISE}".test.js; 
 then
   # Bitcoin related tests (Quest 1)
   [ $DEBUG ] && ( echo ">> Bitcoin test <<" )
   cp -r /home/xa/.bitcoin .
-  # bitcoind -conf=/home/xa/.bitcoin/bitcoin.conf -datadir=/home/xa/.bitcoin -daemon -daemonwait 
   bitcoind -daemon -daemonwait -datadir=/jail/.bitcoin 
   if [ $DEBUG ]; then
     tree -C ~/.bitcoin
@@ -65,17 +64,15 @@ elif test -f "/app/sol/$EXERCISE.test.js"; then
     npx hardhat test "/jail/test/${EXERCISE}.test.js"
   fi 
 
-# # Interface related tests
 elif test -f "/app/web3/${EXERCISE}".test.js; then
+  # Interface related tests
   [ $DEBUG ] && ( echo ">> Web3 interface test <<" )
   mkdir -p /jail/test
   cp /app/hardhat.config.js /jail/
   cp "/app/web3/${EXERCISE}.test.js" /jail/test
 
-  timeout 5s npx hardhat node& 
-  # pid=$!
-  sleep 2
-
+  timeout 5s npx hardhat node >/dev/null& 
+  sleep 1
   npx hardhat test "/jail/test/${EXERCISE}.test.js" 
 
 # Failure

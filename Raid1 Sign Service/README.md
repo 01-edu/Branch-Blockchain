@@ -1,6 +1,6 @@
 # Raid 1 A signing service
 
-The goal of this raid is to create a web service that allows users to upload, sign and store the hash of documents on the blockchain and to 
+The goal of this raid is to create a web service that allows users to upload, sign and store the hash of documents on the blockchain. 
 
 ## Functionalities
 Our signing service consist of three sections. 
