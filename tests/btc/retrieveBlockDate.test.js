@@ -1,5 +1,3 @@
-// node test
-
 const { expect } = require("chai");
 const Client = require('bitcoin-core');
 const  {retrieveBlockDate}= require("/jail/student/retrieveBlockDate.js")
