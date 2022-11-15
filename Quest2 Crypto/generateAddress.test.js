@@ -33,7 +33,7 @@ t(() => {
     let IntermHash = crypto.createHash("sha256").update(binPublicKey).digest('hex')
     let preciseHash = crypto.createHash("sha256").update(xy).digest('hex')
     let expectedHash = address.slice(2,256)
-    return (preciseHash === expectedHash) || (IntermHash === expectedHash)
+    return (preciseHash === expectedHash) || (IntermHash === expectedHash) || (approxHash === expectedHash)
 })
 
 Object.freeze(tests)
