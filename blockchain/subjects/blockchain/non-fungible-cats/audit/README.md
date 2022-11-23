@@ -61,8 +61,8 @@
 ---
 
 ---
-### **Bonus**
-### Exercise 3: Automated Reveal (Optional)
+
+#### Exercise 3: Automated Reveal (Optional)
 
 ##### Try to create a new user and login.
 
@@ -141,15 +141,3 @@
 ###### +Did the message "Are you sure?" appeared on the screen for you to confirm the action?
 
 ###### +After the confirmation were you redirected to the homepage?
-
-### Bonus
-
-###### +Can you confirm that the student created or added something new like a new brand or the category field?
-
-###### +Can you add a product to the cart without opening the add?
-
-###### +If you add four products to the cart from the same seller, can you remove just one from the cart and keep the other three?
-
-###### +Did the student implement its own display and design?
-
-###### +Did the student implement a payment method?
