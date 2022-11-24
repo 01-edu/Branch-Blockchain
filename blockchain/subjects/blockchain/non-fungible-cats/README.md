@@ -126,3 +126,7 @@ For this we will create a node server that will serve the images only once they 
 - [Express documentation](https://expressjs.com/en/4x/api.html)
 - [IPFS documentation](https://docs.ipfs.tech/reference/)
 - [Pinata documentation (commercial pining serivce)](https://docs.pinata.cloud/pinata-api/pinning-services-api)
+
+---
+
+---
