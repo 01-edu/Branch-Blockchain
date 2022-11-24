@@ -216,3 +216,7 @@ const abi = ["function getSecret() view returns (string)"];
 ### Relevance
 
 Reading your first smart contract.
+
+---
+
+---
