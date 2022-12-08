@@ -1,6 +1,6 @@
 ## Donation
 
-We will use a new wallet to send t donation
+We will use a new wallet to send a donation
 
 ### Instructions
 
@@ -13,7 +13,7 @@ Additionally, the page contains:
 - an input field (id:`amount`)
 - a button (id:`donate`)
 
-Pressing this button should send the amount inputted to the address `0x837F324FF70AD9AE4B71084c941c23dDF8371d60`.
+This button should send the amount given to the address `0x837F324FF70AD9AE4B71084c941c23dDF8371d60`. This change should be reflected in the displayed balance of the wallet.
 
 ```html
   <input type="number" id="amount">
@@ -22,9 +22,9 @@ Pressing this button should send the amount inputted to the address `0x837F324FF
 
 ### Hint
 
-You will need to send ETH from the default accounts of the node to your random wallet. 
+You will need to send ETH from the default accounts of the node to your random wallet to be able to test this. 
 
 ### Notions
 
 - [ethers : wallet](https://docs.ethers.io/v5/api/signer/#Wallet)
-- [web3 : accounts](https://web3js.readthedocs.io/en/v1.3.4/web3-eth-accounts.html)
+- [web3 : accounts](https://web3js.readthedocs.io/en/v1.8.1/web3-eth-accounts.html)

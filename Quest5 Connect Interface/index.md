@@ -10,10 +10,9 @@ Today we will learn how to create basic interfaces. All those exercises consist 
 2. [Random wallet](randomWallet/README.md)
 3. [Donation](donation/README.md)
 4. [Connect to MetaMask](connectToMetaMask/README.md)
-5. [Tip](tip/README.md)
 
 ### Optional
-6. [Read a Secret](readSecret/README.md)
+5. [Read a Secret](readSecret/README.md)
 
 
 ## Integration
