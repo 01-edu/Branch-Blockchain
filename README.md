@@ -11,13 +11,13 @@ Those subjects are progressive in difficulty, designed to learn the fundamental 
 - Quest 5: Create a complete decentralised application
 - Raid 1: Create a signing service
 - Quest 6: Create a first token
-- Quest 7: An NFT based DApp
+- Quest 7: An NFT-based DApp
 - Quest 8: Learn the basics of DeFi and security
 - Quest 9: Explore other blockchains
-- Raid 1: Create a tracking service
+- Raid 2: Create a tracking service
 
 ## Tests ⚙️
-Within the `tests/` folder, `runTests.sh` builds a docker image and run a series of sample tests. Solutions are expected to be in the `tests/student` folder.
+Within the `tests/` folder, `runTests.sh` builds a docker image and runs a series of sample tests. Solutions are expected to be in the `tests/student` folder.
 ```shell
 ./runTests.sh
 ```
