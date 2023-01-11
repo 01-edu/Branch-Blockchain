@@ -42,7 +42,7 @@ RUN npm install
 WORKDIR /home/xa
 RUN mkdir -p ~/.bitcoin; echo 'txindex=1\nregtest=1\nserver=1\nrest=1\nrpcallowip=127.0.0.1\nrpcuser=leeloo\nrpcpassword=multipass\nfallbackfee=0.00000003'> ~/.bitcoin/bitcoin.conf
 RUN bitcoind -daemon -daemonwait; bitcoin-cli createwallet "testwallet"; address=`bitcoin-cli getnewaddress`; bitcoin-cli generatetoaddress 101 $address; bitcoin-cli getblockchaininfo; bitcoin-cli stop; sleep 2
-RUN 
+
 
 
 WORKDIR /app
