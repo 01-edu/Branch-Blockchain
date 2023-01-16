@@ -2,7 +2,7 @@
 
 let assert = require('assert');
 const { expect } = require("chai");
-let {txid} = require("/jail/student/sendEthTransaction.js");
+let {txid} = require("/jail/student/send-eth-transaction.js");
 
 function isSha256(h) {
     h = h.slice(2)
