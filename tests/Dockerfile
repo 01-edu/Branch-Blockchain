@@ -31,22 +31,27 @@ RUN groupadd -r xa && useradd -rm -u 1000 -g xa -G audio,video xa
 
 ## Installing npm modules
 RUN npm install -g npm
-USER xa 
 WORKDIR /app
+RUN chmod 777 /app
+USER xa 
+
 COPY package.json .
 
-USER root
+
 RUN npm install
 
 ## Preparing a Bitcoin node
 WORKDIR /home/xa
-RUN mkdir -p ~/.bitcoin; echo 'txindex=1\nregtest=1\nserver=1\nrest=1\nrpcallowip=127.0.0.1\nrpcuser=leeloo\nrpcpassword=multipass\nfallbackfee=0.00000003'> ~/.bitcoin/bitcoin.conf
+RUN mkdir -p /home/xa/.bitcoin; echo 'txindex=1\nregtest=1\nserver=1\nrest=1\nrpcallowip=127.0.0.1\nrpcuser=leeloo\nrpcpassword=multipass\nfallbackfee=0.00000003'> /home/xa/.bitcoin/bitcoin.conf
 RUN bitcoind -daemon -daemonwait; bitcoin-cli createwallet "testwallet"; address=`bitcoin-cli getnewaddress`; bitcoin-cli generatetoaddress 101 $address; bitcoin-cli getblockchaininfo; bitcoin-cli stop; sleep 2
 
+RUN pwd
+RUN ls -la
 
 
 WORKDIR /app
 COPY . .
 USER root
 RUN chmod +x /app/entrypoint.sh
+USER 1000
 ENTRYPOINT ["/app/entrypoint.sh"]
