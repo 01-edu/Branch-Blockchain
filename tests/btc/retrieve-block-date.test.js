@@ -1,6 +1,6 @@
 const { expect } = require("chai");
 const Client = require('bitcoin-core');
-const  {retrieveBlockDate}= require("/jail/student/retrieveBlockDate.js")
+const  {retrieveBlockDate}= require("/jail/student/retrieve-block-date.js")
 
 describe("retrieve block date", function() { 
   let client, hashLatest, timeLatest
