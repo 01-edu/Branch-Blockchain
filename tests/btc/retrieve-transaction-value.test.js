@@ -1,6 +1,6 @@
 const { expect } = require("chai");
 const Client = require('bitcoin-core');
-const  {retrieveTransactionValue}= require("/jail/student/retrieveTransactionValue.js")
+const  {retrieveTransactionValue}= require("/jail/student/retrieve-transaction-value.js")
 
 describe("retrieve transaction value", function() { 
   let client
