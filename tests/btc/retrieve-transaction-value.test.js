@@ -32,8 +32,12 @@ describe("retrieve transaction value", function() {
     let block = await client.getBlockByHash(hashLatest)
     let value = 0
     // expect a second transaction in the latest block (see dockerfile)
-    for (const vout of block.tx[1].vout) { 
-      value += vout.value
+    if (typeof block.tx[1] !== 'undefined') {
+      for (const vout of block.tx[1].vout) { 
+        value += vout.value
+      }
+    } else {
+      throw new TypeError('Latest block does not have a second transaction')
     }
     let txLatest = block.tx[1].txid
     let retrievedValue = await retrieveTransactionValue(txLatest)

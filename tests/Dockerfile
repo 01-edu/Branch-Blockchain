@@ -34,17 +34,14 @@ RUN npm install -g npm
 WORKDIR /app
 RUN chmod 777 /app
 USER xa 
-
 COPY package.json .
-
-
 RUN npm install
 
 ## Preparing a Bitcoin node
 WORKDIR /home/xa
 RUN mkdir -p /home/xa/.bitcoin; echo 'txindex=1\nregtest=1\nserver=1\nrest=1\nrpcallowip=127.0.0.1\nrpcuser=leeloo\nrpcpassword=multipass\nfallbackfee=0.00000003'> /home/xa/.bitcoin/bitcoin.conf
 RUN bitcoind -daemon -daemonwait; bitcoin-cli createwallet "testwallet"; address=`bitcoin-cli getnewaddress`; bitcoin-cli generatetoaddress 101 $address; bitcoin-cli getblockchaininfo; bitcoin-cli stop; sleep 2
-
+RUN bitcoind -daemon -daemonwait; bitcoin-cli loadwallet "testwallet"; address=`bitcoin-cli getnewaddress`; bitcoin-cli sendtoaddress "bcrt1qznrqryhtzr66tp8uzrxsuh58mn2vpfmjxpnxgz" 12 "Another tx" "anonymous";  bitcoin-cli generatetoaddress 1 $address; bitcoin-cli stop; sleep 2
 
 WORKDIR /app
 COPY . .
