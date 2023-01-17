@@ -1,6 +1,7 @@
 const { expect } = require("chai");
-const puppeteer = require('puppeteer'); 
-const opts = {} 
+const puppeteer = require('puppeteer-core'); 
+const opts = {executablePath: '/usr/bin/google-chrome-stable', args: ['--no-sandbox']}
+const express = require('express')
 const crypto = require('crypto')
 
 function sleep(ms) {
@@ -15,13 +16,14 @@ describe('Remote node info', function() {
 
   before(async function() { 
     this.timeout(10000);
-    const app = require('express')();
-    app.use(require('express-static')('.'));
+    const app = express()
+    app.use(express.static('/jail/student/'))
+    app.use(express.static('/app/lib/'))
     server = await app.listen(3001);
 
     browser = await puppeteer.launch(opts);
     page = await browser.newPage();
-    await page.goto('http://localhost:3001/readSecret.sl.html'); 
+    await page.goto('http://localhost:3001/read-secret.html'); 
   });
 
   after(async function() {

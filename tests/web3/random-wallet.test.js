@@ -1,7 +1,8 @@
 const { expect } = require("chai");
 const ethers = require("ethers")
-const puppeteer = require('puppeteer'); 
-const opts = {} //process.env.D ? { headless: false, slowMo: 250 } : {}; 
+const express = require('express')
+const puppeteer = require('puppeteer-core'); 
+const opts = {executablePath: '/usr/bin/google-chrome-stable', args: ['--no-sandbox']}
 function sleep(ms) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
@@ -19,13 +20,14 @@ describe('Remote node info', function() {
   before(async function() { 
     this.timeout(100000);
 
-    const app = require('express')();
-    app.use(require('express-static')('.'));
+    const app = express()
+    app.use(express.static('/jail/student/'))
+    app.use(express.static('/app/lib/'))
     server = await app.listen(3001);
 
     browser = await puppeteer.launch(opts);
     page = await browser.newPage();
-    await page.goto('http://localhost:3001/randomWallet.sl.html'); 
+    await page.goto('http://localhost:3001/random-wallet.html'); 
 
     provider = new ethers.providers.JsonRpcProvider();
     BLOCKNUMBER = await provider.getBlockNumber()

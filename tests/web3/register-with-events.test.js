@@ -11,7 +11,8 @@ describe("Register smart contrat", function() {
   let register = {}
   beforeEach( async function () {
     const RegisterFactory = await ethers.getContractFactory("Register");
-    register = await RegisterFactory.deploy();
+    register = await RegisterFactory.deploy();const opts = {} 
+
     await register.deployed()
   })
   it("Should return date of a document added", async function() {

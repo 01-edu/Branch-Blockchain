@@ -1,9 +1,10 @@
 const { expect } = require("chai");
 const ethers = require("ethers")
+const express = require('express')
 const puppeteer = require('puppeteer-core') 
 const opts = {executablePath: '/usr/bin/google-chrome-stable', args: ['--no-sandbox']}
 
-describe('Remote node info', function() {
+describe('Local node info', function() {
   let browser
   let page
   let server
@@ -14,13 +15,18 @@ describe('Remote node info', function() {
   let DEBUG=false
 
   before(async function() { 
-    const app = require('express')();
-    app.use(require('express-static')('/jail/student/'));
+    // const app = require('express')();
+    // app.use(require('express-static')('/jail/student/'));
+    // app.use(require('express-static')('/app/lib/'));
+    const app = express()
+    app.use(express.static('/jail/student/'))
+    app.use(express.static('/app/lib/'))
+
     server = await app.listen(3001);
 
     browser = await puppeteer.launch(opts);
     page = await browser.newPage();
-    await page.goto('http://127.0.0.1:3001/localNodeInfo.html'); 
+    await page.goto('http://127.0.0.1:3001/local-node-info.html'); 
 
     provider = new ethers.providers.JsonRpcProvider();
     if (DEBUG) console.log(provider)

@@ -21,7 +21,7 @@ describe("sendHash", function() {
     let tx = await provider.getTransaction( txHash ) 
     expect(tx.data).to.equal("0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855");
   });
-  it("Should not change significally the sender balance", async function() {
+  it("Should not change significantly the sender balance", async function() {
     const provider = new ethers.providers.JsonRpcProvider();//http://localhost:8545
     const signerAddress = await provider.getSigner().getAddress()
     let initialBalance = await provider.getBalance(signerAddress)

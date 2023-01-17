@@ -1,13 +1,15 @@
 const { expect } = require("chai");
 const ethers = require("ethers")
-const puppeteer = require('puppeteer'); 
-const opts = {} //process.env.D ? { headless: false, slowMo: 250 } : {}; 
+const express = require('express')
+const puppeteer = require('puppeteer-core'); 
+const opts = {executablePath: '/usr/bin/google-chrome-stable', args: ['--no-sandbox']}
+// const opts = process.env.D ? { headless: false, slowMo: 250 } : {}; 
 function sleep(ms) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
   })
 }
-describe('Remote node info', function() {
+describe('Connect to MetaMask', function() {
   let browser;
   let page;
   let server;
@@ -18,14 +20,17 @@ describe('Remote node info', function() {
 
   before(async function() { 
     this.timeout(100000);
+    const app = express()
+    app.use(express.static('/jail/student/'))
+    app.use(express.static('/app/lib/'))
 
-    const app = require('express')();
-    app.use(require('express-static')('.'));
+    // const app = require('express')();
+    // app.use(require('express-static')('.'));
     server = await app.listen(3001);
 
     browser = await puppeteer.launch(opts);
     page = await browser.newPage();
-    await page.goto('http://localhost:3001/connectToMetaMask.sl.html'); 
+    await page.goto('http://localhost:3001/connect-to-metamask.html'); 
 
     provider = new ethers.providers.JsonRpcProvider();
     BLOCKNUMBER = await provider.getBlockNumber()
@@ -76,7 +81,7 @@ describe('Remote node info', function() {
         await page.waitForSelector('#balance')
         const balance = await page.$eval('#balance', el => el.textContent);
 
-        console.log(addr, ethers.utils.formatEther(networkBalance))
+        // console.log(addr, "Balance : ", ethers.utils.formatEther(networkBalance), balance)
 
         expect(parseInt(balance)).to.be.equal(3) 
       } else {

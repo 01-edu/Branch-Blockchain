@@ -12,6 +12,7 @@
   "author": "Xavier Lavayssière",
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.2.1",
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
     "bitcoin-core": "^4.1.0",
     "chai": "^4.3.7",
     "eslint": "^8.27.0",
