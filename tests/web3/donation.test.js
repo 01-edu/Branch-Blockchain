@@ -8,7 +8,7 @@ function sleep(ms) {
     setTimeout(resolve, ms);
   })
 }
-describe('Remote node info', function() {
+describe('Donation tests', function() {
   let browser;
   let page;
   let server;
@@ -27,9 +27,9 @@ describe('Remote node info', function() {
 
     browser = await puppeteer.launch(opts);
     page = await browser.newPage();
-    await page.goto('http://localhost:3001/donation.sl.html'); 
+    await page.goto('http://localhost:3001/donation.html'); 
 
-    provider = new ethers.providers.JsonRpcProvider();
+    provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
     BLOCKNUMBER = await provider.getBlockNumber()
     let netw = await provider.getNetwork()
     CHAINID = netw.chainId
@@ -93,8 +93,6 @@ describe('Remote node info', function() {
         console.error('Button not found !')
         process.exit(1)
       }
-
-
   }); 
 
 });

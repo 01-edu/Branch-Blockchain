@@ -3,6 +3,7 @@ const { ethers } = require("hardhat");
 
 const DOCHASH = "0x37741ec14d337e77ec4fe2d33be71f2e8aa9d858b5982ab9faf5aebfc6350aea"
 const WRONGDOCHASH = "0x17741ec14d337e77ec4fe2d33be71f2e8aa9d858b5982ab9faf5aebfc6350aea"
+const ANOTHERHASH = "0x27741ec14d337e77ec4fe2d33be71f2e8aa9d858b5982ab9faf5aebfc6350aea"
 
 const REFDATE = 1609459200
 describe("Register smart contrat", function() {

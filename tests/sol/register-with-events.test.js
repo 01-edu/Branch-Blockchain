@@ -10,7 +10,7 @@ const REFDATE = 1609459200
 describe("Register smart contrat", function() {
   let register = {}
   beforeEach( async function () {
-    const RegisterFactory = await ethers.getContractFactory("Register");
+    const RegisterFactory = await ethers.getContractFactory("RegisterWithEvents");
     register = await RegisterFactory.deploy();const opts = {} 
 
     await register.deployed()

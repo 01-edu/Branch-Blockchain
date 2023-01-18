@@ -4,7 +4,7 @@ const ethers = require("ethers")
 describe("sendEther", function() {
     const sendEther = require("/jail/student/send-ether.js")
     it("Checking balance", async function() {
-      const provider = new ethers.providers.JsonRpcProvider()
+      const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545")
       address = "0x7A7a4EdC679bC4E29F74E32E9eEDd256cd435FBb"
       await sendEther(0.01, address)
       let balance = await provider.getBalance(address)
@@ -13,7 +13,7 @@ describe("sendEther", function() {
     });
 
     it("Checking balance", async function() {
-      const provider = new ethers.providers.JsonRpcProvider()
+      const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545")
       address = "0x7A7a4EdC679bC4E29F74E32E9eEDd256cd435FBb"
       await sendEther(0.01, address)
       let balance = await provider.getBalance(address)

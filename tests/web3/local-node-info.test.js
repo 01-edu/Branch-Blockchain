@@ -28,7 +28,7 @@ describe('Local node info', function() {
     page = await browser.newPage();
     await page.goto('http://127.0.0.1:3001/local-node-info.html'); 
 
-    provider = new ethers.providers.JsonRpcProvider();
+    provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
     if (DEBUG) console.log(provider)
     BLOCKNUMBER = await provider.getBlockNumber()
     let netw = await provider.getNetwork()
