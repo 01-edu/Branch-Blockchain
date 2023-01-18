@@ -58,6 +58,7 @@ elif test -f "/app/sol/$EXERCISE.test.js"; then
     solc --version
     npx hardhat --version
     df -h
+    tree /jail
     echo "> Launch tests <"
     npx hardhat --verbose test "/jail/test/${EXERCISE}.test.js"
   else 
@@ -71,7 +72,9 @@ elif test -f "/app/web3/${EXERCISE}".test.js; then
   cp /app/hardhat.config.js /jail/
   cp "/app/web3/${EXERCISE}.test.js" /jail/test
 
-  timeout 5s npx hardhat node >/dev/null& 
+  # Launch a local node
+  # If the test fails in local environments, try to increase the timeout. It is because hardhat compiles all contracts before running the tests.
+  timeout 6s npx hardhat node >/dev/null& 
   sleep 1
   npx hardhat test "/jail/test/${EXERCISE}.test.js" 
 

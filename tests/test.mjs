@@ -1,6 +1,5 @@
 // Modified version of js/tests/tests.mjs to run nodejs code XL
-const DEBUG = true
-
+const DEBUG = false
 
 import { join as joinPath, dirname } from 'path'
 import { fileURLToPath } from 'url'
@@ -64,7 +63,7 @@ const read = (filename, description) =>
     ifNoEnt(() => fatal(`Missing ${description} for ${name}`)),
   )
 
-console.log("Testing", name)
+if(DEBUG) console.log("Testing", name)
 
 const stackFmt = (err, url) => {
   if (!(err instanceof Error)) {
@@ -90,7 +89,7 @@ const main = async () => {
   const code = rawCode.replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, '').trim()
   if (code.includes('import')) fatal('import keyword not allowed')
 
-  const parts = test.split('// /*/ // ⚡jianyang')
+  const parts = test.split('// /*/ // ⚡')
   const [inject, testCode] = parts.length < 2 ? ['', test] : parts
   const combined = `${inject.trim()}\n${rawCode
     .replace(inject.trim(), '')

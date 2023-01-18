@@ -8,7 +8,7 @@ function sleep(ms) {
     setTimeout(resolve, ms);
   })
 }
-describe('Remote node info', function() {
+describe('Random wallet', function() {
   let browser;
   let page;
   let server;
@@ -63,7 +63,7 @@ describe('Remote node info', function() {
         value: ethers.utils.parseEther("3"),
     })
     await response.wait()
-    sleep(100) // arbitrary number
+    sleep(400) // arbitrary number
     let networkBalance = await provider.getBalance(addr)
 
     await page.waitForSelector('#refreshBalance')
@@ -78,7 +78,7 @@ describe('Remote node info', function() {
         await page.waitForSelector('#balance')
         const balance = await page.$eval('#balance', el => el.textContent);
 
-        console.log(addr, ethers.utils.formatEther(networkBalance))
+        // console.log(addr, ethers.utils.formatEther(networkBalance))
 
         expect(parseInt(balance)).to.be.equal(3) 
       } else {

@@ -9,7 +9,7 @@ function sleep(ms) {
     setTimeout(resolve, ms);
   })
 }
-describe('Remote node info', function() {
+describe('Read secret', function() {
   let browser;
   let page;
   let server;
