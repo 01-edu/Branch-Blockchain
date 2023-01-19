@@ -2,14 +2,14 @@ require("@nomiclabs/hardhat-waffle")
 
 const { TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD } = require("hardhat/builtin-tasks/task-names")
 const path = require("path")
-const expectedSolcVersion = "0.8.11"
+const expectedSolcVersion = "0.8.17"
 
+// Subtask to use solc that hash been downloaded from the ppa instead of a downloaded version
 subtask(TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD, async (args, hre, runSuper) => {
     if (args.solcVersion === expectedSolcVersion) {
         // const compilerPath = path.join(__dirname, "solc");
         const compilerPath = path.join("/usr/bin", "solc")
-
-        console.log(">>> Compiler path : ", compilerPath)
+        // console.log(">>> Compiler path : ", compilerPath) // Uncomment to debug compiler path location 
 
         return {
             compilerPath,
