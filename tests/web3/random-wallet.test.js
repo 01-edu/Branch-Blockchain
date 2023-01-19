@@ -12,8 +12,6 @@ describe('Random wallet', function() {
   let browser;
   let page;
   let server;
-  let BLOCKNUMBER
-  let CHAINID 
   let signer
   let provider
 
@@ -25,15 +23,12 @@ describe('Random wallet', function() {
     app.use(express.static('/app/lib/'))
     server = await app.listen(3001);
 
+    provider = new ethers.providers.JsonRpcProvider();
+    signer = provider.getSigner()
+
     browser = await puppeteer.launch(opts);
     page = await browser.newPage();
     await page.goto('http://localhost:3001/random-wallet.html'); 
-
-    provider = new ethers.providers.JsonRpcProvider();
-    BLOCKNUMBER = await provider.getBlockNumber()
-    let netw = await provider.getNetwork()
-    CHAINID = netw.chainId
-    signer = provider.getSigner()
 
   });
 
@@ -50,10 +45,10 @@ describe('Random wallet', function() {
 
   it('Should have the correct balance initial balance', async function() {  
     await page.waitForSelector('#balance')
+    await sleep(400)
     const balance = await page.$eval('#balance', el => el.textContent);
     expect(parseInt(balance)).to.be.equal(0) 
   })
-
 
   it('Should have the correct balance after a transaction', async function() {  
     await page.waitForSelector('#address', {visible: true})
@@ -63,8 +58,8 @@ describe('Random wallet', function() {
         value: ethers.utils.parseEther("3"),
     })
     await response.wait()
-    sleep(400) // arbitrary number
-    let networkBalance = await provider.getBalance(addr)
+    // sleep(400) // arbitrary number
+    // let networkBalance = await provider.getBalance(addr)
 
     await page.waitForSelector('#refreshBalance')
 
@@ -74,11 +69,9 @@ describe('Random wallet', function() {
         await page.click('#refreshBalance')
         // await button.evaluate( b => b.click() );
 
-        sleep(800)
+        await sleep(400)
         await page.waitForSelector('#balance')
         const balance = await page.$eval('#balance', el => el.textContent);
-
-        // console.log(addr, ethers.utils.formatEther(networkBalance))
 
         expect(parseInt(balance)).to.be.equal(3) 
       } else {
