@@ -24,6 +24,8 @@ subtask(TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD, async (args, hre, runSuper) => {
     return runSuper()
 })
 
+
+// TOCHECK Contract compiling from the contract folder is a hack due to unexpected duplicates (see entrypoint)
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
@@ -32,7 +34,7 @@ module.exports = {
 
     paths: {
         root: "/jail",
-        sources: "./student",
+        sources: "./contracts",
         tests: "./test",
         cache: "./cache",
         artifacts: "./artifacts"
