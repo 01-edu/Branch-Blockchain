@@ -10,9 +10,9 @@ CONTENT_FOLDER=/app
 if [ $DEBUG ]; then
   echo ">>> Entrypoint script in debug mode <<<"
   /app/infos.sh
-  set -x
+  # set -x # Can be used to identify commands launched
 else 
-   set -e
+  set -e
 fi
 
 ## Base files for node and solidity tests
@@ -52,6 +52,11 @@ elif test -f "/app/sol/$EXERCISE.test.js"; then
   cp /app/sol/${EXERCISE}.test.js /jail/test/
   cp /app/hardhat.config.js /jail/
   cd /jail
+  
+  # TOCHECK Solution to ensure that only one contract is compiled at the time
+  # If /jail/student had only the submitted zip, they could be run directly with ro benefit, with propoer hardhat config
+  mkdir -p /jail/contracts
+  cp /jail/student/${EXERCISE}.sol /jail/contracts/
 
   if [ $DEBUG ]; then
     echo "> Debug Info <"
@@ -61,6 +66,7 @@ elif test -f "/app/sol/$EXERCISE.test.js"; then
     tree /jail
     echo "> Launch tests <"
     npx hardhat --verbose test "/jail/test/${EXERCISE}.test.js"
+    tree /jail
   else 
     npx hardhat test "/jail/test/${EXERCISE}.test.js"
   fi 
