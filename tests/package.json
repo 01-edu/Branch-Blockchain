@@ -10,16 +10,20 @@
     "url": "git+https://github.com/01-edu/Branch-Blockchain.git"
   },
   "author": "Xavier Lavayssière",
-  "devDependencies": {
+  "dependencies": {
     "@nomiclabs/hardhat-ethers": "^2.2.2",
     "@nomiclabs/hardhat-waffle": "^2.0.3",
     "bitcoin-core": "^4.1.0",
     "chai": "^4.3.7",
-    "eslint": "^8.32.0",
+    "ethereum-waffle": "^3.4.4",
     "ethers": "^5.7.2",
     "express": "^4.18.2",
     "hardhat": "^2.12.6",
     "mocha": "^10.2.0",
-    "puppeteer-core": "^19.5.2"
+    "puppeteer-core": "^19.5.2",
+    "typescript": "^4.9.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.32.0"
   }
 }
