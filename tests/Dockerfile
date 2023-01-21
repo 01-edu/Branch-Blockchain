@@ -1,23 +1,22 @@
-FROM ubuntu:focal
+FROM ubuntu:jammy
 
-## Base tools (compiler, download tools, base libraries for chrome.)
-RUN apt-get update && \
-		apt-get install -y software-properties-common apt-utils curl wget tree sudo 
-	# gnupg ca-certificates procps are implicit dependencies required for chrome below
-
-## Install google chrome - optimised 
-RUN wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-	apt-get install -y --no-install-recommends ./google-chrome-stable_current_amd64.deb libxss1  && \
-	rm google-chrome-stable_current_amd64.deb
-
+## Base tools for compilation and download
+## Google chrome for puppeteer, optimised 
 ## Node & Ethereum
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && \
-		add-apt-repository ppa:ethereum/ethereum && \
-    apt-get update && \
-    apt-get install solc nodejs -y
+RUN apt-get update && \
+	apt-get install -y software-properties-common apt-utils wget tree sudo && \
+	wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+	apt-get install -y --no-install-recommends ./google-chrome-stable_current_amd64.deb libxss1  && \
+	rm google-chrome-stable_current_amd64.deb && \
+	wget -qO- https://deb.nodesource.com/setup_18.x | sudo -E bash - && \
+	add-apt-repository ppa:ethereum/ethereum && \
+	apt-get update && \
+	apt-get install -y --no-install-recommends solc nodejs && \
+	apt-get clean
+	# gnupg ca-certificates procps are implicit dependencies required for chrome
 
 ## Bitcoin node
-RUN bitcoinCoreVersion="23.0"; \
+RUN bitcoinCoreVersion="24.0.1"; \
 		wget -q "https://bitcoincore.org/bin/bitcoin-core-$bitcoinCoreVersion/bitcoin-$bitcoinCoreVersion-x86_64-linux-gnu.tar.gz"; \
 		tar xzf "bitcoin-$bitcoinCoreVersion-x86_64-linux-gnu.tar.gz"; \
 		mv bitcoin-$bitcoinCoreVersion/bin/* /usr/local/bin ; \
@@ -30,12 +29,14 @@ RUN bitcoinCoreVersion="23.0"; \
 RUN groupadd -r xa && useradd -rm -u 1000 -g xa -G audio,video xa
 
 ## Installing npm modules
-RUN npm install -g npm
+RUN npm install -g npm 
+	# pnpm has git as a dependency
 WORKDIR /app
-RUN chmod 777 /app
+RUN chmod 777 /app 
 USER xa 
 COPY package.json .
-RUN npm install
+RUN npm install --omit=dev
+	# pnpm install --prod == npm --omit=dev
 
 ## Preparing a Bitcoin node
 WORKDIR /home/xa
@@ -46,6 +47,7 @@ RUN bitcoind -daemon -daemonwait; bitcoin-cli loadwallet "testwallet"; address=`
 WORKDIR /app
 COPY . .
 USER root
+
 RUN chmod +x /app/entrypoint.sh
 USER 1000
 ENTRYPOINT ["/app/entrypoint.sh"]

@@ -1,7 +1,13 @@
-student
-dft
+# Drafts and solutions
+student*
+dft*
+
+# Build files that might remain from local experiments 
 cache
 artifacts
+node_modules
 
+# Simply unecessary files
 .eslintrc.json
 package-lock.json
+pnpm-lock.yaml
