@@ -19,7 +19,7 @@ You should not use any crypto with value for any exercise of the module. If you 
 1. [sendTransaction](sendTransaction/README.md) _Send a Bitcoin transaction_
 2. [retrieveBlockDate](retrieveBlockDate/README.md) _get a block date_
 3. [retrieveTransactionValue](retrieveTransactionValue/README.md) _get the value of a transaction_
-4. [sendTransactionToPeer](sendTransactionToPeer/README.md) _send a bitcoin transaction to a peer
+4. [sendTransactionToPeer](sendTransactionToPeer/README.md) _send a bitcoin transaction to a peer_
 5. [sendEthTransaction](sendEthTransaction/README.md) _Send a transaction to an address on a testnet_
 
 #### Optional
@@ -74,8 +74,7 @@ node test.mjs <exercices>
 
 ### Festival Smart Contract Quest
 
-*We didn't take the Bastille to make an opera out of it! - 
-Pierre Desproges*
+*We didn't take the Bastille to make an opera out of it! - Pierre Desproges*
 
 Today we will build our first Smart Contracts. Smart Contracts are programs deployed on a blockchain network to provide additional functionalities. In the context of this quest, we will focus on Ethereum Smart Contracts. There main development language is Solidity.
 
@@ -116,7 +115,7 @@ npx hardhat test tests/<exercise>.test.js
 
 ### Anchoring
 
-A simple use of blockhains is to anchor documents. We will hash documents and store them in a blockchain. 
+A simple use of blockchains is to anchor documents. We will hash documents and store them in a blockchain. 
 
 For this, we will use a local test node and interact with it using JavaScript
 
@@ -255,9 +254,9 @@ In addition, each token is linked to an Uniform Resource Identifier (URI) where 
 
 *I accidentally killed it - devops199*
 
-It is time for us to advance beyond basic contracts for integrate with actual DeFi smart contrat. For this we will need to use current standards and implementations. 
+It is time for us to advance beyond basic contracts for integrate with actual DeFi smart contract. For this we will need to use current standards and implementations. 
 
-First, we will create a simple stablecoin, following the ERC20 standart and an oracle. We will then create a decentralised exchange that will allow us to exchange our stablecoin. Finally, we will create the tests for this project. 
+First, we will create a simple stablecoin, following the ERC20 standard and an oracle. We will then create a decentralised exchange that will allow us to exchange our stablecoin. Finally, we will create the tests for this project. 
 
 #### Content
 1. [stablecoin](stablecoin/README.md)

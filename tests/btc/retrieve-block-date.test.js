@@ -1,15 +1,15 @@
-const { expect } = require("chai");
-const Client = require('bitcoin-core');
-const  {retrieveBlockDate}= require("/jail/student/retrieve-block-date.js")
+const { expect } = require("chai")
+const Client = require('bitcoin-core')
+const { retrieveBlockDate } = require("/jail/student/retrieve-block-date.js")
 
-describe("retrieve block date", function() { 
+describe("retrieve block date", function () {
   let client, hashLatest, timeLatest
 
-  beforeEach( async function () {
-    client = new Client({ 
-      network: 'regtest', 
-      username: 'leeloo', 
-      password: 'multipass', 
+  beforeEach(async function () {
+    client = new Client({
+      network: 'regtest',
+      username: 'leeloo',
+      password: 'multipass',
       port: 18443 //18445
     })
     hashLatest = await client.getBestBlockHash()
@@ -17,7 +17,7 @@ describe("retrieve block date", function() {
     timeLatest = block.time
   })
 
-  it("latest block is ok", async function() {
+  it("latest block is ok", async function () {
     let retrievedTime = await retrieveBlockDate(hashLatest)
     expect(retrievedTime).to.equal(timeLatest)
   })

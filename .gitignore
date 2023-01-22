@@ -1,22 +1,24 @@
-# Draft files (to be removed)
-*.sl.*
+# Draft files and solutions
 dft*
-*.sol
+student*
 
 ## Potential key files
 *.txt
 *.pem
+*.cer
 *key*
 
 ## Typical unecessary files & folders
 package-lock.json
 node_modules/
 .vscode
+pnpm-lock.yaml
 
-## build folders & files
+## Build folders & files (should not be necessary when everyting is run in docker)
 build/
 artifacts/
 cache/
 coverage/
 coverage.json
 bin/
+solc
