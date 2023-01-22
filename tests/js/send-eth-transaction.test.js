@@ -6,7 +6,6 @@ let {txid} = require("/jail/student/send-eth-transaction.js");
 
 function isSha256(h) {
     h = h.slice(2)
-    console.log(h)
     const regex = /^[a-f0-9]{64}$/gi
     return regex.test(h)
 }  
@@ -18,7 +17,7 @@ describe('Send transaction', function () {
 });
 
 
-
+// Prior version of the test using test.mjs
 // // /*/ // ⚡
 
 // setup =  function (params) {
