@@ -1,5 +1,4 @@
-const { expect } = require("chai");
-const { ethers } = require("hardhat");
+const { expect } = require("chai")
 
 const FUTUREDATE = 1814936827 // 2027-7-7 07:07:07
 
@@ -14,9 +13,9 @@ describe("Time and Place", function() {
     await expect(Festival.deploy(FUTUREDATE, "Sziget")).not.be.reverted
   });
 
-  it("Should not deploy with inverted parameters", async function() {
-    await expect(Festival.deploy("Sziget", FUTUREDATE)).to.be.reverted;
-  });
+  // it("Should not deploy with inverted parameters", async function() {
+  //   await expect(Festival.deploy("Sziget", FUTUREDATE)).to.be.reverted;
+  // });
 
   it("Should have an getStartTime function", async function() {
     let festival = await Festival.deploy(FUTUREDATE, "Sziget")

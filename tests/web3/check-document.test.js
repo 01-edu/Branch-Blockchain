@@ -1,5 +1,5 @@
-const { expect } = require("chai");
-const ethers = require("ethers")
+const { expect } = require("chai")
+
 const crypto = require("crypto")
 
 describe("Check document", function() {

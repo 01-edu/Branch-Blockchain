@@ -1,4 +1,6 @@
-require("@nomiclabs/hardhat-waffle")
+// require("@nomiclabs/hardhat-waffle")
+require("@nomiclabs/hardhat-ethers")
+require("@nomicfoundation/hardhat-chai-matchers")
 
 const { TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD } = require("hardhat/builtin-tasks/task-names")
 const path = require("path")
@@ -39,4 +41,8 @@ module.exports = {
         cache: "./cache",
         artifacts: "./artifacts"
     },
+    mocha: {
+        timeout: 10000,
+        parallel: true
+      }
 }

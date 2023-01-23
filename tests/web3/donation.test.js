@@ -1,8 +1,11 @@
 const { expect } = require("chai")
-const ethers = require("ethers")
+
 const express = require('express')
 const puppeteer = require('puppeteer-core')
 const opts = { executablePath: '/usr/bin/google-chrome-stable', args: ['--no-sandbox'] }
+// Option with the default puppeteer Chromium browser:
+// const puppeteer = require('puppeteer')
+// const opts = {args: ['--no-sandbox']}
 function sleep(ms) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms)

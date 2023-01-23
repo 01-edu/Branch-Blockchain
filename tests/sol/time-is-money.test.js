@@ -1,6 +1,4 @@
-const { expect } = require("chai");
-const { ethers } = require("hardhat");
-
+const { expect } = require("chai")
 
 describe("Time is Money - time aspect", function() { 
   let Festival, orga, attendee, artist

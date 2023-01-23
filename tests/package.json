@@ -12,18 +12,16 @@
   "author": "Xavier Lavayssière",
   "dependencies": {
     "@nomiclabs/hardhat-ethers": "^2.2.2",
-    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@nomicfoundation/hardhat-chai-matchers": "^1.0.5",
     "bitcoin-core": "^4.1.0",
     "chai": "^4.3.7",
-    "ethereum-waffle": "^3.4.4",
-    "ethers": "^5.7.2",
     "express": "^4.18.2",
     "hardhat": "^2.12.6",
     "mocha": "^10.2.0",
-    "puppeteer-core": "^19.5.2",
-    "typescript": "^4.9.4"
+    "puppeteer-core": "^19.5.2"
   },
   "devDependencies": {
-    "eslint": "^8.32.0"
+    "eslint": "^8.32.0",
+    "typescript": "^4.9.4"
   }
 }

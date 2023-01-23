@@ -1,5 +1,4 @@
-const { expect } = require("chai");
-const { ethers } = require("hardhat");
+const { expect } = require("chai")
 
 describe("Artists do work", function() { 
   let festival, orga, attendee, artist
@@ -14,7 +13,7 @@ describe("Artists do work", function() {
     await expect(festival.addRemuneratedArtist(artist.address)).to.not.be.reverted
   })
 
-  it("anyone but the organiser can add an artist", async function() {
+  it("anyone but the organizer can add an artist", async function() {
     await expect(festival.connect(artist).addRemuneratedArtist(artist.address)).to.be.reverted
   });
 
