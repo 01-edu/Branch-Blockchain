@@ -1,7 +1,4 @@
-const { BigNumber } = require("@ethersproject/bignumber");
-const { expect } = require("chai");
-const { ethers } = require("hardhat");
-
+const { expect } = require("chai")
 
 describe("Festival LineUp", function() {
   let Festival, festival, owner, attendee

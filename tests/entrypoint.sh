@@ -76,14 +76,15 @@ elif test -f "/app/web3/${EXERCISE}".test.js; then
   [ $DEBUG ] && ( echo ">> Web3 interface test <<" )
   mkdir -p /jail/test
   cp /app/hardhat.config.js /jail/
-  cp "/app/web3/${EXERCISE}.test.js" /jail/test
+  # When using the default chromium, this brings the configuration to the jail to redirect cache
+  # cp /app/puppeteer.config.cjs /jail/
 
+  cp "/app/web3/${EXERCISE}.test.js" /jail/test
   # Launch a local node
   # If the test fails in local environments, try to increase the timeout. It is because hardhat compiles all contracts before running the tests.
   timeout 6s npx hardhat node >/dev/null& 
-  sleep 1
-  npx hardhat test "/jail/test/${EXERCISE}.test.js" 
-
+  sleep 0.2
+  npx hardhat test "/jail/test/${EXERCISE}.test.js"
 # Failure
 else 
   echo "Entrypoint> No suitable test found for $EXERCISE"

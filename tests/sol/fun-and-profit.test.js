@@ -1,5 +1,4 @@
-const { expect } = require("chai");
-const { ethers } = require("hardhat");
+const { expect } = require("chai")
 
 describe("Fun and profit ", function() { 
   let festival, deployed, orga, attendee

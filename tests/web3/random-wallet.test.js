@@ -1,5 +1,5 @@
-const { expect } = require("chai");
-const ethers = require("ethers")
+const { expect } = require("chai")
+
 const express = require('express')
 const puppeteer = require('puppeteer-core'); 
 const opts = {executablePath: '/usr/bin/google-chrome-stable', args: ['--no-sandbox']}
@@ -45,7 +45,7 @@ describe('Random wallet', function() {
 
   it('Should have the correct balance initial balance', async function() {  
     await page.waitForSelector('#balance')
-    await sleep(400)
+    await sleep(300)
     const balance = await page.$eval('#balance', el => el.textContent);
     expect(parseInt(balance)).to.be.equal(0) 
   })
@@ -68,8 +68,7 @@ describe('Random wallet', function() {
         // await button.click()
         await page.click('#refreshBalance')
         // await button.evaluate( b => b.click() );
-
-        await sleep(400)
+        await sleep(300)
         await page.waitForSelector('#balance')
         const balance = await page.$eval('#balance', el => el.textContent);
 

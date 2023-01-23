@@ -1,9 +1,9 @@
-const { expect } = require("chai");
-const { ethers } = require("hardhat");
+const { expect } = require("chai")
 
 const FUTUREDATE = 1814936827 // 2027-7-7 07:07:07
+
 describe("OrganizedFestival", function() {
-  let festival, orga, attendee
+  let Festival, orga, attendee
 
   before( async function () {
     Festival = await ethers.getContractFactory("OrganizedFestival");

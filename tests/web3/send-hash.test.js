@@ -1,5 +1,5 @@
-const { expect } = require("chai");
-const ethers = require("ethers")
+const { expect } = require("chai")
+
 function sleep(ms) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);

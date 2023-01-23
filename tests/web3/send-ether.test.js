@@ -1,5 +1,4 @@
-const { expect } = require("chai");
-const ethers = require("ethers")
+const { expect } = require("chai")
 
 describe("sendEther", function() {
     const sendEther = require("/jail/student/send-ether.js")

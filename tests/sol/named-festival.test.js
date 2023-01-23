@@ -1,5 +1,4 @@
 const { expect } = require("chai")
-const { ethers } = require("hardhat")
 
 // For optimisation, as it is mostly checks, tests on the same instance
 describe("Festival Name", function() {

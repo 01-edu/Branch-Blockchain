@@ -1,5 +1,4 @@
-const { expect } = require("chai");
-const { ethers } = require("hardhat");
+const { expect } = require("chai")
 
 const DOCHASH = "0x37741ec14d337e77ec4fe2d33be71f2e8aa9d858b5982ab9faf5aebfc6350aea"
 const WRONGDOCHASH = "0x17741ec14d337e77ec4fe2d33be71f2e8aa9d858b5982ab9faf5aebfc6350aea"

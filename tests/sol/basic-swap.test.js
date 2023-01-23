@@ -14,7 +14,7 @@ describe("Basic Swap", function() {
     await minito.deployed();
     await baswa.deployed();
   })
-  it("Deploy account should have INITIAL_SUPPLY units ", async function() {
+  it("Deploy account should have "+INITIAL_SUPPLY+" units ", async function() {
     expect(await minito.accounts(owner.address)).to.equal(INITIAL_SUPPLY)
   });
   it("Too large transaction should fail", async function() {
