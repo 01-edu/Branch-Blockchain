@@ -7,6 +7,7 @@ describe("Check document", function() {
     let provider
     before(async function() {
       provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");//http://localhost:8545
+      await provider.ready
     })
     
     async function sendHash(entry) {

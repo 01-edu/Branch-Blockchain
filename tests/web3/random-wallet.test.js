@@ -16,14 +16,13 @@ describe('Random wallet', function() {
   let provider
 
   before(async function() { 
-    this.timeout(100000);
-
     const app = express()
     app.use(express.static('/jail/student/'))
     app.use(express.static('/app/lib/'))
     server = await app.listen(3001);
 
-    provider = new ethers.providers.JsonRpcProvider();
+    provider = new ethers.providers.JsonRpcProvider()
+    await provider.ready
     signer = provider.getSigner()
 
     browser = await puppeteer.launch(opts);

@@ -19,7 +19,6 @@ describe('Connect to MetaMask', function() {
   let provider
 
   before(async function() { 
-    this.timeout(100000);
     const app = express()
     app.use(express.static('/jail/student/'))
     app.use(express.static('/app/lib/'))
@@ -32,7 +31,8 @@ describe('Connect to MetaMask', function() {
     page = await browser.newPage();
     await page.goto('http://localhost:3001/connect-to-metamask.html'); 
 
-    provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
+    provider = new ethers.providers.JsonRpcProvider("http://localhost:8545")
+    await provider.ready
     BLOCKNUMBER = await provider.getBlockNumber()
     let netw = await provider.getNetwork()
     CHAINID = netw.chainId

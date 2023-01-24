@@ -4,15 +4,14 @@ const express = require('express')
 const puppeteer = require('puppeteer-core') 
 const opts = {executablePath: '/usr/bin/google-chrome-stable', args: ['--no-sandbox']}
 
+const {sleep, DEBUG, displayBrowserLogs} = require('/app/lib/helpers')
+
+
 describe('Local node info', function() {
   let browser
   let page
   let server
-  let BLOCKNUMBER
-  let CHAINID 
-  let signer
   let provider
-  let DEBUG=false
 
   before(async function() { 
     this.timeout(100000);
@@ -28,13 +27,11 @@ describe('Local node info', function() {
     browser = await puppeteer.launch(opts);
     page = await browser.newPage();
     await page.goto('http://127.0.0.1:3001/local-node-info.html'); 
+    if (DEBUG) displayBrowserLogs(page)
 
-    provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
+    provider = new ethers.providers.JsonRpcProvider("http://localhost:8545")
+    await provider.ready
     if (DEBUG) console.log(provider)
-    // BLOCKNUMBER = await provider.getBlockNumber()
-    let netw = await provider.getNetwork()
-    CHAINID = netw.chainId
-    signer = provider.getSigner()
   });
 
   after(async function() {
@@ -44,17 +41,21 @@ describe('Local node info', function() {
 
   it('Should have the correct chainID', async function() {
     await page.waitForSelector('#chainId', {visible: true})
+    sleep(300)
+    let netw = await provider.getNetwork()
     const pageChainId = await page.$eval('#chainId', ci => ci.textContent);
-    expect(parseInt(pageChainId)).to.be.equal(CHAINID) 
+    expect(parseInt(pageChainId)).to.be.equal(netw.chainId) 
   }); 
 
+  it('Should have the correct number of blocks', async function() {  
+    await page.waitForSelector('#blockNumber')
+    sleep(300)
+    let blockNumber = await provider.getBlockNumber()
+    const pageBlockNumber = await page.$eval('#blockNumber', ci => ci.innerText);
+    expect(parseInt(pageBlockNumber)).to.be.equal(blockNumber) 
+  }); 
+  
   // TOCHECK : Temporarily disabled because it getBlockNumber seems unreliable. 
-  // it('Should have the correct number of blocks', async function() {  
-  //   await page.waitForSelector('#blockNumber')
-  //   const pageBlockNumber = await page.$eval('#blockNumber', ci => ci.innerText);
-  //   expect(parseInt(pageBlockNumber)).to.be.equal(BLOCKNUMBER) 
-  // }); 
-
   // it('Should have the correct blocknumber after a transaction', async function() {  
   //   const txHash = await signer.sendTransaction({
   //       to: '0x7A7a4EdC679bC4E29F74E32E9eEDd256cd435FBb',
@@ -62,6 +63,7 @@ describe('Local node info', function() {
   //   })
   //   await page.reload({ waitUntil: ["networkidle0", "domcontentloaded"] });
   //   await page.waitForSelector('#blockNumber')
+  //   sleep(300)
   //   const pageBlockNumber = await page.$eval('#blockNumber', ci => ci.innerText);
   //   let currentBlockNumber = await provider.getBlockNumber()
   //   expect(parseInt(pageBlockNumber)).to.be.equal(currentBlockNumber) 

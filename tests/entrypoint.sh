@@ -81,9 +81,9 @@ elif test -f "/app/web3/${EXERCISE}".test.js; then
 
   cp "/app/web3/${EXERCISE}.test.js" /jail/test
   # Launch a local node
-  # If the test fails in local environments, try to increase the timeout. It is because hardhat compiles all contracts before running the tests.
-  timeout 6s npx hardhat node >/dev/null& 
-  sleep 0.2
+  npx hardhat node >/dev/null& 
+  sleep 0.2 # Short wait for the node to be ready but students should check.
+  # Launch the tests
   npx hardhat test "/jail/test/${EXERCISE}.test.js"
 # Failure
 else 
