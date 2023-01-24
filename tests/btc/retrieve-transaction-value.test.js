@@ -1,10 +1,10 @@
 const { expect } = require("chai");
 const Client = require('bitcoin-core');
 const  {retrieveTransactionValue}= require("/jail/student/retrieve-transaction-value.js")
+const { DEBUG } = require('/app/lib/helpers')
 
 describe("retrieve transaction value", function() { 
   let client
-  let DEBUG=false
 
   beforeEach( async function () {
     client = new Client({ 

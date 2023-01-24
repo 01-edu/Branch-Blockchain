@@ -6,11 +6,8 @@ const opts = { executablePath: '/usr/bin/google-chrome-stable', args: ['--no-san
 // Option with the default puppeteer Chromium browser:
 // const puppeteer = require('puppeteer')
 // const opts = {args: ['--no-sandbox']}
-function sleep(ms) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms)
-  })
-}
+const {sleep, DEBUG, displayBrowserLogs} = require('/app/lib/helpers')
+
 describe('Donation tests', function () {
   let browser
   let page
@@ -22,6 +19,8 @@ describe('Donation tests', function () {
     // this.timeout(100000) // used during development to ensure timely execution
 
     provider = new ethers.providers.JsonRpcProvider("http://localhost:8545")
+    await provider.ready 
+    if(DEBUG) console.log("Got provider: ", provider)
     signer = provider.getSigner()
     
     const app = express()
@@ -32,6 +31,8 @@ describe('Donation tests', function () {
     browser = await puppeteer.launch(opts)
     page = await browser.newPage()
     await page.goto('http://localhost:3001/donation.html')
+ 
+    if(DEBUG) displayBrowserLogs(page)
   })
 
   after(async function () {
