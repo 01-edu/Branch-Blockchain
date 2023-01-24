@@ -55,5 +55,5 @@ COPY . .
 USER root
 # RUN chown -R xa:xa /app
 RUN chmod +x /app/entrypoint.sh
-USER xa
+USER 1000
 ENTRYPOINT ["/app/entrypoint.sh"]
