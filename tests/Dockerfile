@@ -26,7 +26,7 @@ RUN bitcoinCoreVersion="24.0.1"; \
 	# Details at https://github.com/cryptotuxorg/cryptotux/blob/master/install/bitcoin.sh
 
 # ## Preparing user & rights for runtime 
-RUN groupadd -r xa && useradd -rm -u 1000 -g xa -G audio,video xa
+RUN groupadd -r xa -g 1000 && useradd -rm -u 1000 -g xa -G audio,video xa
 RUN mkdir -p /app; chown xa:xa /app
 	# The partition is read only at runtime and entrypoint is run as user 1000
 RUN npm install -g npm 
@@ -43,7 +43,7 @@ RUN bitcoind -daemon -daemonwait; bitcoin-cli loadwallet "testwallet"; address=`
 WORKDIR /app
 COPY package.json .
 	# Duplicated but we need at only this file at this stage. Avoids rebuilds when only code changes
-RUN npm install --omit=dev	
+RUN npm install --loglevel verbose --omit=dev	
 	# pnpm install --prod == npm --omit=dev
 	# pnpm has git as a dependency. Upon testing, gains are not significant and can have more unexpected side effects
 
