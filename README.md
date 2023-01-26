@@ -1,12 +1,13 @@
 # Branch Blockchain 🟩
 
-Repository for the blockchain branch content. 
+Repository for the blockchain branch.
 
-## Content 👀
-Those subjects are progressive in difficulty, designed to learn the fundamental of blockchains as well as the main technologies and tools used in the industry.
+## Content 📖
 
-- Quest 1: Experiment basic Bitcoin transactions
-- Quest 2: Learn fundamental cryptography 
+Exercises are progressive in difficulty. They are designed to learn the fundamentals of blockchains as well as the main technologies and tools used in the industry.
+
+- Quest 1: Experiment with basic Bitcoin transactions
+- Quest 2: Learn fundamental cryptography
 - Quest 3: Create a complete Smart Contract
 - Quest 4: Scripted interactions with the Ethereum blockchain
 - Quest 5: Create a complete decentralised application
@@ -17,37 +18,45 @@ Those subjects are progressive in difficulty, designed to learn the fundamental 
 - Quest 9: Explore other blockchains
 - Raid 1: Create a tracking service
 
-For an introduction per Quest see [introductions](introductions.md).
+For more details see the [introductions](introductions.md) and the [subjects](https://github.com/01-edu/public/tree/master/subjects/blockchain)
 
 ## Tests ⚙️
-Within the `tests/` folder, `runTests.sh` builds a docker image and run a series of sample tests. Solutions are expected to be in the `tests/student` folder.
+
+Within the `tests/` folder, `run.sh` builds a docker image and runs the tests. Solutions are expected to be in a `tests/student` folder. For each available solution file, the appropriate test will be launched individually. The docker daemon or docker desktop needs to be running.
+
 ```shell
-# Launch docker desktop or equivalent
 cd tests
-./runTests.sh
+./run.sh
 ```
 
-It is also possible to run tests individually:
+The final output should be similar to:
+
 ```shell
-./runTests.sh retrieve-block-date 
+artists-do-work ✅ 4, basic-swap ✅ 4, basic-wallet ✅ 0, buy-tickets ✅ 2, check-document ✅ 6, connect-to-metamask ✅ 5, donation ✅ 6, eventful-token ✅ 3, fun-and-profit ✅ 3,
+tests ran:9 in avg 4261 ms
 ```
 
-### Advanced commands
-Advanced commands are available in the `tests/` folder:
+It is also possible to run tests individually (with debug mode on):
 
-**Build the docker image**
 ```shell
+./run.sh retrieve-block-date 
+```
+
+### Commands
+
+The following underlying commands can be launched individually from `tests/` folder:
+
+```shell
+# build the docker image
 docker build . -t blockchain 
-```
 
-**Run an example BTC test**
-```shell
-docker run --read-only --network none --memory 500M --user 1000:1000 -e DEBUG=true -e EXERCISE=retrieveBlockDate --env HOME=/jail --env TMPDIR=/jail --workdir /jail --tmpfs /jail:size=100M,noatime,exec,nodev,nosuid,uid=1000,gid=1000,nr_inodes=5k,mode=1700 --volume /home/$USER/code/01Branch-Blockchain/tests/student:/jail/student:ro blockchain:latest
-```
-**Explore the docker image**
-```shell
+# Run a BTC test
+docker run --read-only --network none --memory 500M --user 1000:1000 -e DEBUG=true -e EXERCISE=retrieve-block-date --env HOME=/jail --env TMPDIR=/jail --workdir /jail --tmpfs /jail:size=100M,noatime,exec,nodev,nosuid,uid=1000,gid=1000,nr_inodes=5k,mode=1700 --volume $PWD/student.all:/jail/student:ro blockchain:latest
+
+# Explore the docker image
 docker run -it --entrypoint /bin/bash blockchain:latest
 ```
 
 ## Authors ✍️
-Xavier Lavayssière - [🐙](https://github.com/Xalava) [🐦](https://twitter.com/Xalava)
+
+Xavier Lavayssière - [🐙](https://github.com/Xalava) [🐦](https://twitter.com/xavierlava)
