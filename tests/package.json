@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Repository for the blockchain branch content.",
   "scripts": {
-    "test": "./runTests.sh"
+    "test": "./run.sh",
+    "format": "eslint --fix ."
   },
   "repository": {
     "type": "git",

@@ -10,7 +10,7 @@
     },
     "rules": {
         "indent": [
-            "warning",
+            2,
             2
         ],
         "linebreak-style": [
@@ -23,7 +23,12 @@
             "never"
         ],
         "no-prototype-builtins": "off",
-        "no-unused-vars": ["error", {  "argsIgnorePattern": "params"}]
+        "no-unused-vars": [
+            "error",
+            {
+                "argsIgnorePattern": "params"
+            }
+        ]
     },
     "globals": {
         "setup": "writable",

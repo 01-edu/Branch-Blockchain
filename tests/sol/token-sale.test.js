@@ -17,7 +17,7 @@ describe("Token Sale", function() {
     expect(await minito.balanceOf(owner.address)).to.equal(200)
   })
   it("Insufficient balance transactions should fail", async function() {
-      await expect( minito.transfer(alice.address, 2000)).to.be.reverted
+    await expect( minito.transfer(alice.address, 2000)).to.be.reverted
   })
   it("Transfer should change balances", async function() {
     await minito.transfer(alice.address, 15)

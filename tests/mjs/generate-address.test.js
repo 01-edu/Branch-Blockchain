@@ -4,8 +4,8 @@ const t = (f) => tests.push(f)
 
 // Check if keys can be imported
 t(() => {
-    let { address, publicKey, privateKey } = generateAddress()
-    return true
+  let { address, publicKey, privateKey } = generateAddress()
+  return true
 })
 
 // Import for following tests
@@ -27,13 +27,13 @@ t(() => address.length === 66)
 
 // Address corresponds to key precise or intermediate
 t(() => {
-    let binPublicKey = crypto.createPublicKey(publicKey).export({type:'spki', format:'der'})
-    let xy = binPublicKey.slice(24, 89)
-    let approxHash = crypto.createHash("sha256").update(publicKey).digest('hex')
-    let IntermHash = crypto.createHash("sha256").update(binPublicKey).digest('hex')
-    let preciseHash = crypto.createHash("sha256").update(xy).digest('hex')
-    let expectedHash = address.slice(2,256)
-    return (preciseHash === expectedHash) || (IntermHash === expectedHash) || (approxHash === expectedHash)
+  let binPublicKey = crypto.createPublicKey(publicKey).export({type:'spki', format:'der'})
+  let xy = binPublicKey.slice(24, 89)
+  let approxHash = crypto.createHash("sha256").update(publicKey).digest('hex')
+  let IntermHash = crypto.createHash("sha256").update(binPublicKey).digest('hex')
+  let preciseHash = crypto.createHash("sha256").update(xy).digest('hex')
+  let expectedHash = address.slice(2,256)
+  return (preciseHash === expectedHash) || (IntermHash === expectedHash) || (approxHash === expectedHash)
 })
 
 Object.freeze(tests)

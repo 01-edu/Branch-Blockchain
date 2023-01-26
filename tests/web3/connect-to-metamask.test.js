@@ -1,18 +1,18 @@
-const { expect } = require("chai");
+const { expect } = require("chai")
 const ethers = require("ethers")
 const express = require('express')
-const puppeteer = require('puppeteer-core'); 
+const puppeteer = require('puppeteer-core') 
 const opts = {executablePath: '/usr/bin/google-chrome-stable', args: ['--no-sandbox']}
 // const opts = process.env.D ? { headless: false, slowMo: 250 } : {}; 
 function sleep(ms) {
   return new Promise((resolve) => {
-    setTimeout(resolve, ms);
+    setTimeout(resolve, ms)
   })
 }
 describe('Connect to MetaMask', function() {
-  let browser;
-  let page;
-  let server;
+  let browser
+  let page
+  let server
   let BLOCKNUMBER
   let CHAINID 
   let signer
@@ -25,11 +25,11 @@ describe('Connect to MetaMask', function() {
 
     // const app = require('express')();
     // app.use(require('express-static')('.'));
-    server = await app.listen(3001);
+    server = await app.listen(3001)
 
-    browser = await puppeteer.launch(opts);
-    page = await browser.newPage();
-    await page.goto('http://localhost:3001/connect-to-metamask.html'); 
+    browser = await puppeteer.launch(opts)
+    page = await browser.newPage()
+    await page.goto('http://localhost:3001/connect-to-metamask.html') 
 
     provider = new ethers.providers.JsonRpcProvider("http://localhost:8545")
     await provider.ready
@@ -38,22 +38,22 @@ describe('Connect to MetaMask', function() {
     CHAINID = netw.chainId
     signer = provider.getSigner()
 
-  });
+  })
 
   after(async function() {
-    await browser.close();
-    await server.close();
-  });
+    await browser.close()
+    await server.close()
+  })
 
   it('should have a properly formatted address', async function() {  
     await page.waitForSelector('#address', {visible: true})
     const addr = await page.$eval('#address', elem => elem.textContent)
     expect(parseInt(addr.length)).to.be.equal(42) 
-  }); 
+  }) 
 
   it('Should have the correct balance initial balance', async function() {  
     await page.waitForSelector('#balance')
-    const balance = await page.$eval('#balance', el => el.textContent);
+    const balance = await page.$eval('#balance', el => el.textContent)
     expect(parseInt(balance)).to.be.equal(0) 
   })
 
@@ -90,4 +90,4 @@ describe('Connect to MetaMask', function() {
   //     }
   // }); 
 
-});
+})

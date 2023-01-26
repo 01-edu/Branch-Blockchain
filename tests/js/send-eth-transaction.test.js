@@ -1,20 +1,20 @@
 // Basic test as a placeholder
 
-let assert = require('assert');
-const { expect } = require("chai");
-let {txid} = require("/jail/student/send-eth-transaction.js");
+let assert = require('assert')
+const { expect } = require("chai")
+let {txid} = require("/jail/student/send-eth-transaction.js")
 
 function isSha256(h) {
-    h = h.slice(2)
-    const regex = /^[a-f0-9]{64}$/gi
-    return regex.test(h)
+  h = h.slice(2)
+  const regex = /^[a-f0-9]{64}$/gi
+  return regex.test(h)
 }  
 
 describe('Send transaction', function () {
   it('Should return a valid txid', function () {
-    assert.ok(isSha256(txid));
-  });
-});
+    assert.ok(isSha256(txid))
+  })
+})
 
 
 // Prior version of the test using test.mjs
