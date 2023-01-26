@@ -36,7 +36,7 @@ then
   npx mocha "/app/btc/${EXERCISE}.test.js"
 
 elif test -f "/app/js/$EXERCISE.test.js"; then
-  # Pure js tests (Quest 1)
+  # Pure js tests
   [ $DEBUG ] && ( echo ">> Pure JS test <<" )
   npx mocha "/app/js/${EXERCISE}.test.js"
 
@@ -59,12 +59,10 @@ elif test -f "/app/sol/$EXERCISE.test.js"; then
   cp /jail/student/${EXERCISE}.sol /jail/contracts/
 
   if [ $DEBUG ]; then
-    echo "> Debug Info <"
     solc --version
     npx hardhat --version
     df -h
     tree /jail
-    echo "> Launch tests <"
     npx hardhat --verbose test "/jail/test/${EXERCISE}.test.js"
     tree /jail
   else 
@@ -85,8 +83,8 @@ elif test -f "/app/web3/${EXERCISE}".test.js; then
   sleep 0.2 # Short wait for the node to be ready but students should check.
   # Launch the tests
   npx hardhat test "/jail/test/${EXERCISE}.test.js"
-# Failure
 else 
+  # Failure
   echo "Entrypoint> No suitable test found for $EXERCISE"
   tree -I node_modules /app 
   exit 1
