@@ -3,10 +3,10 @@ const { expect } = require("chai")
 describe("Artists do work", function() { 
   let festival, orga, attendee, artist
   beforeEach( async function () {
-    const Festival = await ethers.getContractFactory("ArtistsDoWork");
-    festival = await Festival.deploy();
+    const Festival = await ethers.getContractFactory("ArtistsDoWork")
+    festival = await Festival.deploy()
     await festival.deployed();
-    [orga, attendee, artist] = await ethers.getSigners();
+    [orga, attendee, artist] = await ethers.getSigners()
   })
 
   it("should add an artist", async function() {
@@ -15,7 +15,7 @@ describe("Artists do work", function() {
 
   it("anyone but the organizer can add an artist", async function() {
     await expect(festival.connect(artist).addRemuneratedArtist(artist.address)).to.be.reverted
-  });
+  })
 
   it("The artist should get payed ", async function() {
     await festival.addRemuneratedArtist(artist.address)
@@ -26,7 +26,7 @@ describe("Artists do work", function() {
     await festival.connect(attendee).buyTicket(overrides)
     await festival.connect(artist).getPayed()
     expect(await orga.provider.getBalance(artist.address)).to.gt(ethers.utils.parseEther("10000"))
-  });
+  })
 
   it("There are not enough funds", async function() {
     const expValue = ethers.utils.parseEther("0.3")
@@ -36,7 +36,7 @@ describe("Artists do work", function() {
     await festival.connect(attendee).buyTicket(overrides)
     await festival.addRemuneratedArtist(artist.address)
     await expect(festival.connect(artist).getPayed()).to.be.reverted
-  });
+  })
   it("Artist not registered", async function() {
     const expValue = ethers.utils.parseEther("23")
     const overrides = {
@@ -44,7 +44,7 @@ describe("Artists do work", function() {
     }
     await festival.connect(attendee).buyTicket(overrides)
     await expect(festival.connect(artist).getPayed()).to.be.reverted
-  });
+  })
   it("Artist got payed twice", async function() {
     const expValue = ethers.utils.parseEther("23")
     const overrides = {
@@ -54,5 +54,5 @@ describe("Artists do work", function() {
     await festival.addRemuneratedArtist(artist.address)
     await festival.connect(artist).getPayed()
     await expect(festival.connect(artist).getPayed()).to.be.reverted
-  });
-});
+  })
+})

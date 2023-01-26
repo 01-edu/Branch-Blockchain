@@ -1,11 +1,11 @@
 const { expect } = require("chai")
 
-const {transfersHistory} = require('/jail/student/transfers-history.js');
-const mockEventfulCompiled = require('/app/web3/mock-eventful.json');
+const {transfersHistory} = require('/jail/student/transfers-history.js')
+const mockEventfulCompiled = require('/app/web3/mock-eventful.json')
 
 function sleep(ms) {
   return new Promise((resolve) => {
-    setTimeout(resolve, ms);
+    setTimeout(resolve, ms)
   })
 }
 
@@ -16,9 +16,9 @@ describe('Transfers History', function (){
     [deployer] = await ethers.getSigners()
     const abi = mockEventfulCompiled.abi
     const bytecode = mockEventfulCompiled.bytecode
-    const eventfulFactory = await ethers.getContractFactory(abi, bytecode);
-    eventful = await eventfulFactory.deploy();
-    await eventful.deployed();
+    const eventfulFactory = await ethers.getContractFactory(abi, bytecode)
+    eventful = await eventfulFactory.deploy()
+    await eventful.deployed()
   })
 
   it("Eventful should be deployed", async function() {

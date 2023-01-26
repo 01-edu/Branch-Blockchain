@@ -10,5 +10,5 @@ describe("Have you read the tutorial?", function () {
     expect(0).to.be.equal(0)
   })
 
-});
+})
 
