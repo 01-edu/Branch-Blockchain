@@ -1,0 +1,96 @@
+# Analysis of the docker image size and execution time for the various build options for the base software stack.
+
+# Average execution are recurring
+# generally after a cold start, on a i5-8250U CPU @ 1.60GHz, 8GB RAM, 256GB SSD 
+# Max measured seem to denote heat, load or cache issues
+
+### Ubuntu jammy with ppa versions of node, direct solc & chrome (high to low usage)
+# with npx & chai-matchers : size is 1.22GB and runs all tests in 3.9s avg 
+# with bunx --bun & chai-matchers : 1.45GB with 3.7s avg
+# with npx & chai-matchers & pp_options : 1.22GB with 3.7 (max 4.6 avg)
+# with npx & hh-waffle & pp_options : 1.67 GB with 3.6s
+# with bunx --bun & hh-waffle : 1.67 GB with 3.3s (max measured 3.9 avg)
+# with bunx --bun & hh-waffle & pp_options : 1.67 GB with 3.3s 
+# with bunx --bun & chai-matchers & pp_options : 1.45GB with 3.3s avg (3.5 non cold, max 4.6)
+
+## Conclusion;
+# Bunx (vs npx) : +0.23GB -0.2s Labelled as experimental
+# chai-matchers (vs waffle) : -0.37GB -0s 
+# pp_options (vs no options) : -0GB -0.2s
+
+FROM ubuntu:jammy
+
+## Base tools installations
+RUN apt-get update && \
+	# ca-certificates is required for wget downloads, apt utils for ppa additions. Optimisations here don't end well
+	apt-get install -y software-properties-common apt-utils wget tree sudo && \
+	# apt-get install -y	gcc g++ make && \
+	# Not used in most tests, recommended by nodejs documentation
+	# adds 0.2GB & might sligthy improve execution time, but I found not evidence
+	## Google direct
+	wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+	apt-get install -y --no-install-recommends ./google-chrome-stable_current_amd64.deb libxss1  && \
+	rm google-chrome-stable_current_amd64.deb && \
+	## Node ppa
+	wget -qO- https://deb.nodesource.com/setup_18.x | sudo -E bash - && \
+	apt-get update && \
+	apt-get install -y --no-install-recommends nodejs && \
+	### solc direct
+	wget -q https://github.com/ethereum/solidity/releases/download/v0.8.17/solc-static-linux && \
+	mv solc-static-linux /usr/bin/solc && \
+	chmod +x /usr/bin/solc && \
+	## Cleaning
+	apt-get clean && \
+	rm -rf /var/lib/apt/lists/*
+
+### Ubuntu jammy with ppa versions of node & solc & direct chrome: 
+# size is 1.32GB and runs all tests in 3.8s avg 
+
+FROM ubuntu:jammy
+
+## Base tools for compilation and download
+## Google chrome for puppeteer, optimised 
+## Node & Ethereum
+RUN apt-get update && \
+	apt-get install -y software-properties-common apt-utils wget tree sudo && \
+	wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+	apt-get install -y --no-install-recommends ./google-chrome-stable_current_amd64.deb libxss1  && \
+	rm google-chrome-stable_current_amd64.deb && \
+	wget -qO- https://deb.nodesource.com/setup_18.x | sudo -E bash - && \
+	add-apt-repository ppa:ethereum/ethereum && \
+	apt-get update && \
+	apt-get install -y --no-install-recommends solc nodejs && \
+	apt-get clean && \
+	# gnupg ca-certificates procps are implicit dependencies required for chrome
+	rm -rf /var/lib/apt/lists/* 
+
+### Debian bookworm with repository packages of node & chromium & direct solc: 
+# size is 1.27GB and runs all tests in 4.5s avg 
+
+FROM debian:bookworm-slim
+RUN apt-get update && \
+	apt-get install -y --no-install-recommends ca-certificates wget tree sudo chromium nodejs npm && \
+	wget -q https://github.com/ethereum/solidity/releases/download/v0.8.17/solc-static-linux && \
+	ln -s /usr/bin/chromium /usr/bin/google-chrome-stable && \
+	mv solc-static-linux /usr/bin/solc && \
+	chmod +x /usr/bin/solc && \
+	apt-get clean && \
+	rm -rf /var/lib/apt/lists/* 
+# A lighter chromium-shell package is available in testing but it is not working well with puppeteer
+
+### Debian bookworm with repository node, direct chrome & solc
+# size is 1.20GB and runs all tests in 4.9s avg
+# with bunx --bun, hh-waffle, pp_options : 1.58GB with 4.1s avg
+# with bunx --bun && chai-matchers && pp_options : 1.36GB with 4.0s avg (Max 4.3s avg)
+FROM debian:bookworm-slim
+RUN apt-get update && \
+	apt-get install -y --no-install-recommends ca-certificates wget tree sudo nodejs npm && \
+	# ca-certificates is required for wget downloads
+	wget -q https://github.com/ethereum/solidity/releases/download/v0.8.17/solc-static-linux && \
+	mv solc-static-linux /usr/bin/solc && \
+	chmod +x /usr/bin/solc && \
+	wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+	apt-get install -y --no-install-recommends ./google-chrome-stable_current_amd64.deb libxss1 && \
+	rm google-chrome-stable_current_amd64.deb && \
+	apt-get clean && \
+	rm -rf /var/lib/apt/lists/* 
