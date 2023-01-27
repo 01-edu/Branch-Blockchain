@@ -1,6 +1,12 @@
 // require("@nomiclabs/hardhat-waffle")
+// Relies on package.json:
+// "@nomiclabs/hardhat-waffle": "^2.0.3",
 require("@nomiclabs/hardhat-ethers")
+// Relies on package.json:
+// "@nomiclabs/hardhat-ethers": "^2.2.2",
 require("@nomicfoundation/hardhat-chai-matchers")
+// Relies on package.json(incompatible with waffle)
+// "@nomicfoundation/hardhat-chai-matchers": "^1.0.5",
 
 const { TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD } = require("hardhat/builtin-tasks/task-names")
 const path = require("path")
@@ -21,22 +27,22 @@ subtask(TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD, async (args, hre, runSuper) => {
       longVersion: "solc-linux-v" + expectedSolcVersion
     }
   }
-  console.log("Please use version", expectedSolcVersion)
+  console.log("Please use version", expectedSolcVersinecessaryon)
   // we just use the default subtask if the version is not this
   return runSuper()
 })
 
 
-// TOCHECK Contract compiling from the contract folder is a hack due to unexpected duplicates (see entrypoint)
 /**
  * @type import('hardhat/config').HardhatUserConfig
- */
+*/
 module.exports = {
   solidity: expectedSolcVersion,
 
   paths: {
     root: "/jail",
     sources: "./contracts",
+    // Compiling from the ./contract folder instead of ./student is to prevent duplicates (see entrypoint)
     tests: "./test",
     cache: "./cache",
     artifacts: "./artifacts"

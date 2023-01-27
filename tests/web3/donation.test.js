@@ -2,11 +2,8 @@ const { expect } = require("chai")
 
 const express = require('express')
 const puppeteer = require('puppeteer-core')
-const opts = { executablePath: '/usr/bin/google-chrome-stable', args: ['--no-sandbox'] }
-// Option with the default puppeteer Chromium browser:
-// const puppeteer = require('puppeteer')
-// const opts = {args: ['--no-sandbox']}
-const {sleep, DEBUG, displayBrowserLogs} = require('/app/lib/helpers')
+
+const { sleep, DEBUG, displayBrowserLogs, pp_options } = require('/app/lib/helpers')
 
 describe('Donation tests', function () {
   let browser
@@ -19,20 +16,20 @@ describe('Donation tests', function () {
     // this.timeout(100000) // used during development to ensure timely execution
 
     provider = new ethers.providers.JsonRpcProvider("http://localhost:8545")
-    await provider.ready 
-    if(DEBUG) console.log("Got provider: ", provider)
+    await provider.ready
+    if (DEBUG) console.log("Got provider: ", provider)
     signer = provider.getSigner()
-    
+
     const app = express()
     app.use(express.static('/jail/student/'))
     app.use(express.static('/app/lib/'))
     server = await app.listen(3001)
 
-    browser = await puppeteer.launch(opts)
+    browser = await puppeteer.launch(pp_options)
     page = await browser.newPage()
     await page.goto('http://localhost:3001/donation.html')
- 
-    if(DEBUG) displayBrowserLogs(page)
+
+    if (DEBUG) displayBrowserLogs(page)
   })
 
   after(async function () {
@@ -66,7 +63,7 @@ describe('Donation tests', function () {
     // The user donates 1 Ether
     await page.waitForSelector('#donate')
     await page.$eval('#amount', el => el.value = '1')
-    
+
     // If button is available, check the new balance
     let button = await page.$('#donate')
     if (button) {

@@ -6,37 +6,37 @@ const ANOTHERHASH = "0x27741ec14d337e77ec4fe2d33be71f2e8aa9d858b5982ab9faf5aebfc
 
 const REFDATE = 1609459200
 
-describe("Register smart contrat", function() {
+describe("Register smart contract", function () {
   let register = {}
-  beforeEach( async function () {
+  beforeEach(async function () {
     const RegisterFactory = await ethers.getContractFactory("RegisterWithEvents")
-    register = await RegisterFactory.deploy();const opts = {} 
+    register = await RegisterFactory.deploy()
 
     await register.deployed()
   })
-  it("Should return date of a document added", async function() {
+  it("Should return date of a document added", async function () {
     await register.addDocument(DOCHASH)
 
     expect(await register.getDate(DOCHASH)).to.be.at.least(REFDATE)
   })
-  it("Should return 0 for a document not added", async function() {
+  it("Should return 0 for a document not added", async function () {
     expect(await register.getDate(WRONGDOCHASH)).to.be.equal(0)
   })
-  it("Should have the correct event hash", async function() {
+  it("Should have the correct event hash", async function () {
     await register.addDocument(DOCHASH)
     let eventsFilter = await register.filters.DocumentAdded(null, null)
     const listEvents = await register.queryFilter(eventsFilter, 0)
 
     expect(listEvents[0].args[0]).to.equal(DOCHASH)
   })
-  it("Should have the correct event date", async function() {
+  it("Should have the correct event date", async function () {
     await register.addDocument(DOCHASH)
     let eventsFilter = await register.filters.DocumentAdded(null, null)
     const listEvents = await register.queryFilter(eventsFilter, 0)
 
     expect(listEvents[0].args[1]).to.be.at.least(REFDATE)
   })
-  it("Should produce the appropriate number of events", async function() {
+  it("Should produce the appropriate number of events", async function () {
     await register.addDocument(DOCHASH)
     await register.addDocument(WRONGDOCHASH)
     await register.addDocument(ANOTHERHASH)
