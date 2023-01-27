@@ -1,15 +1,10 @@
 const { expect } = require("chai")
 
 const puppeteer = require('puppeteer-core')
-const opts = { executablePath: '/usr/bin/google-chrome-stable', args: ['--no-sandbox'] }
 const express = require('express')
 const crypto = require('crypto')
+const { sleep, pp_options } = require("/app/lib/helpers")
 
-function sleep(ms) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms)
-  })
-}
 describe('Read secret', function () {
   let browser
   let page
@@ -22,7 +17,7 @@ describe('Read secret', function () {
     app.use(express.static('/app/lib/'))
     server = await app.listen(3001)
 
-    browser = await puppeteer.launch(opts)
+    browser = await puppeteer.launch(pp_options)
     page = await browser.newPage()
     await page.goto('http://localhost:3001/read-secret.html')
   })
