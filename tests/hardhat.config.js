@@ -27,7 +27,7 @@ subtask(TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD, async (args, hre, runSuper) => {
       longVersion: "solc-linux-v" + expectedSolcVersion
     }
   }
-  console.log("Please use version", expectedSolcVersinecessaryon)
+  console.log("Please use version", expectedSolcVersion)
   // we just use the default subtask if the version is not this
   return runSuper()
 })
