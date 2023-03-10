@@ -16,7 +16,7 @@ You should not use any crypto with value for any exercise of the module. If you 
 
 #### Mandatory
 
-1. [sendTransaction](sendTransaction/README.md) _Send a Bitcoin transaction_
+1. [sendTransaction](https://github.com/01-edu/public/blob/master/subjects/blockchain/send-transaction/README.md) _Send a Bitcoin transaction_
 2. [retrieveBlockDate](retrieveBlockDate/README.md) _get a block date_
 3. [retrieveTransactionValue](retrieveTransactionValue/README.md) _get the value of a transaction_
 4. [sendTransactionToPeer](sendTransactionToPeer/README.md) _send a bitcoin transaction to a peer_
