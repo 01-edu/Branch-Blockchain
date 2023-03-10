@@ -35,12 +35,12 @@ if test -f "/app/btc/${EXERCISE}".test.js; then
     bitcoin-cli listwallets
     bitcoin-cli getblockchaininfo
   fi
-  xx mocha "/app/btc/${EXERCISE}.test.js"
+  npx mocha -b "/app/btc/${EXERCISE}.test.js"
 
 elif test -f "/app/js/$EXERCISE.test.js"; then
   # Pure js tests
   [ $DEBUG ] && (echo ">> Pure JS test <<")
-  xx mocha "/app/js/${EXERCISE}.test.js"
+  npx mocha -b "/app/js/${EXERCISE}.test.js"
 
 elif test -f "/app/mjs/${EXERCISE}.test.js"; then
   # Tests relying on the test.mjs (Quest 2)
