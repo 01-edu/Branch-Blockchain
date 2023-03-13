@@ -1,5 +1,6 @@
-import assert from 'assert'
-import { txid } from '/jail/student/send-transaction.js'
+let assert = require('assert')
+const { expect } = require("chai")
+let { txid } = require("/jail/student/send-transaction.js")
 
 function isSha256(h) {
   const regex = /^[a-f0-9]{64}$/gi
