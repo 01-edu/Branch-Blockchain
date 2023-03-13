@@ -1,7 +1,6 @@
 {
   "name": "01branch-blockchain",
   "version": "1.0.0",
-  "type": "module",
   "description": "Repository for the blockchain branch content.",
   "scripts": {
     "test": "./run.sh",
