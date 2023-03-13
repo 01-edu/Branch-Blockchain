@@ -1,5 +1,4 @@
 let assert = require('assert')
-const { expect } = require("chai")
 let { tx } = require("/jail/student/send-transaction-to-peer.js")
 
 function isSha256(h) {
