@@ -1,7 +1,7 @@
-import crypto from 'crypto'
-import fs from 'fs/promises'
-import assert from 'assert'
-import { hashFile } from '/jail/student/hash-file.js'
+const crypto = require('crypto')
+const fs = require('fs/promises')
+const assert = require('assert')
+const { hashFile } = require('/jail/student/hash-file.js')
 
 const h = e => crypto.createHash('sha256').update(e).digest('hex')
 
