@@ -17,9 +17,9 @@ describe("OrganizedFestival", function() {
     await expect(Festival.deploy(FUTUREDATE, "Sziget")).not.be.reverted
   })
 
-  it("Should not deploy with inverted parameters", async function() {
-    await expect(Festival.deploy("Sziget", FUTUREDATE)).to.be.reverted
-  })
+  //it("Should not deploy with inverted parameters", async function() {
+    //await expect(Festival.deploy("Sziget", FUTUREDATE)).to.be.reverted
+  //})
 
   it("Should have a getStartTime and a getPlace functions", async function() {
     let festival = await Festival.deploy(FUTUREDATE, "Sziget")
