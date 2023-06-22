@@ -1,6 +1,8 @@
-# Branch Blockchain 🟩
+# ⛓️ Branch Blockchain
 
-Repository for the blockchain branch.
+[![🐳 On Master - Build and Test Docker Image](https://github.com/01-edu/Branch-Blockchain/actions/workflows/ga-image-build-master.yml/badge.svg?branch=master)](https://github.com/01-edu/Branch-Blockchain/actions/workflows/ga-image-build-master.yml)
+
+Repository for the blockchain branch content and tests.
 
 ## Content 📖
 
