@@ -50,15 +50,12 @@ RUN bitcoind -daemon -daemonwait; bitcoin-cli createwallet "testwallet"; address
 
 ## Copy the code
 WORKDIR /app
-# COPY --chown=xa:xa package.json .
-	# Duplicated copy when we want to avoid npm install on every change
-COPY --chown=xa:xa . .
-	# xa:xa ownership is not necessary locally but might prevent some issues in production
 
 ## Installing npm modules
+COPY --chown=xa:xa package.json ./
 RUN npm install --loglevel verbose --omit=dev	
-	# pnpm install --prod == npm install --omit=dev
-	# pnpm has git as a dependency. Upon testing, gains are not significant and can have more unexpected side effects
+
+COPY --chown=xa:xa . .
 
 ## Entrypoint
 # USER root 
