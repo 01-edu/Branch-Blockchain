@@ -24,7 +24,7 @@ describe("Usable token (Allowances)", function() {
 
   it("Owner can approve and allowance corresponds", async function() {
     await minito.approve(alice.address, 23)
-    expect(await minito.allowance(owner.address, alice.address)).to.equal(23)
+    expect(await minito.allowance[alice.address]).to.equal(23)
   })
 
   it("Too large transferFrom should fail", async function() {
