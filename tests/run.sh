@@ -46,53 +46,58 @@ synthesis() {
 	testNumber=$((testNumber + 1))
 }
 
-# Check if there is an argument: 
-if [ ! -z "$1" ]; then
-	if [ "$1" = "clean" ]; then
+## Main evaluation of the argument
+# Alt: Check if there is an argument: if [ ! -z "$1" ]; then
+case "$1" in
+	"clean")
+		## Clean the docker image. Necessary during development, could be skipped later.
 		echo "▶️ Clean (docker housekeeping)"
-		## Clean and rebuild the docker image. Necessary during development, could be skipped later.
 		# Remove exited docker containers
 		docker rm $(docker ps -a -f status=exited -q)
 		# docker container prune -f
-		# Remove docker images
+		# Remove unused docker images
 		docker image prune -f
 		# Remove temporary student folder
 		rm -rf $TEMP_STUDENT
-		exit 0
-	elif [ "$1" = "nuclear" ]; then
-		# Nuclear : Remove stopped containers, images and volumes
+		;;
+	"nuclear")
+		## Nuclear : Remove stopped containers, images and volumes. Forces a clean start
+		echo "▶️ Nuclear housekeeping"
 		docker system prune -af
 		rm -rf $TEMP_STUDENT
 		rm -rf node_modules
-		exit 0
-	elif [ "$1" = "help" ]  || ["$1" = "-h"]; then
+		;;
+	"help" | "-h")
 		displayHelp
-		exit 0
-	fi
-	# A specific test has been named, we run it with the debug flag
-	docker build . -t blockchain --progress=plain
-	mkdir -p $TEMP_STUDENT
-	cp $STORAGE_STUDENT/$1.{sol,js,html,mjs} $TEMP_STUDENT 2>/dev/null
-	time docker run $BaseOptions -e DEBUG=true -e EXERCISE="$1" blockchain:latest
-else
-	# No specific test has been named, run all tests with a summary at the end
-	echo "▶️ Docker build"
-	docker build . -t blockchain
-	echo "▶️ Running test"
-	# -e DEBUG=true available
-	mkdir -p $TEMP_STUDENT
-	for file in $STORAGE_STUDENT/*; do
-		testname=$(basename "${file%.*}")
-		rm $TEMP_STUDENT/* # for debugging, the folder is left and removed at the next run
-		cp $STORAGE_STUDENT/$testname.{sol,js,html,mjs} $TEMP_STUDENT 2>/dev/null
-		sleep 0.1
-		date=$(date +%s%N)
-		docker run $BaseOptions -e EXERCISE=$testname blockchain:latest
-		synthesis $testname
-	done
-	sleep 1
-	echo "▶️ Results"
-	echo $Results
-	echo "$testNumber tests ran in $(($totalRuntime / 1000000 / $testNumber)) ms avg"
-fi
+		;;
+	"")
+		## No specific test has been named, run all tests with a summary at the end
+		echo "▶️ Docker build"
+		docker build . -t blockchain
+		echo "▶️ Running test"
+		mkdir -p $TEMP_STUDENT
+		for file in $STORAGE_STUDENT/*; do
+			testname=$(basename "${file%.*}")
+			rm $TEMP_STUDENT/* # To facilitate debugging, the folder is emptied at the beginning of the next test
+			cp $STORAGE_STUDENT/$testname.{sol,js,html,mjs} $TEMP_STUDENT 2>/dev/null
+			sleep 0.1
+			date=$(date +%s%N)
+			# Alt: -e DEBUG=true available
+			docker run $BaseOptions -e EXERCISE=$testname blockchain:latest
+			synthesis $testname
+		done
+		sleep 1
+		echo "▶️ Results"
+		echo $Results
+		echo ""
+		echo "$testNumber tests ran in $(($totalRuntime / 1000000 / $testNumber)) ms on avg"
+		;;
+	*)
+		## A specific test has been named. We run it with the debug flag
+		docker build . -t blockchain --progress=plain
+		mkdir -p $TEMP_STUDENT
+		cp $STORAGE_STUDENT/$1.{sol,js,html,mjs} $TEMP_STUDENT 2>/dev/null
+		time docker run $BaseOptions -e DEBUG=true -e EXERCISE="$1" blockchain:latest
+		;;
+esac
 exit 0
