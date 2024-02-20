@@ -91,6 +91,7 @@ case "$1" in
 		echo $Results
 		echo ""
 		echo "$testNumber tests ran in $(($totalRuntime / 1000000 / $testNumber)) ms on avg"
+		echo -e "\n$(date) \n $Results \n $testNumber tests ran in $(($totalRuntime / 1000000 / $testNumber)) ms on avg" >> run.log
 		;;
 	*)
 		## A specific test has been named. We run it with the debug flag
