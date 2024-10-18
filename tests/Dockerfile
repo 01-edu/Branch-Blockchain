@@ -7,7 +7,7 @@ RUN apt-get update && \
 	# ca-certificates is required for wget downloads, apt utils for ppa additions. Optimisations here don't end well
 	## Google direct
 	wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-	apt-get install -y --no-install-recommends ./google-chrome-stable_current_amd64.deb libxss1  && \
+	apt-get install -y --no-install-recommends ./google-chrome-stable_current_amd64.deb libxss1 netcat  && \
 	rm google-chrome-stable_current_amd64.deb && \
 	## Node ppa
 	wget -qO- https://deb.nodesource.com/setup_18.x | bash - && \
