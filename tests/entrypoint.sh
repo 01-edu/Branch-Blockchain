@@ -84,7 +84,15 @@ elif test -f "/app/web3/${EXERCISE}".test.js; then
   cp "/app/web3/${EXERCISE}.test.js" /jail/test
   # Launch a local node
   xx hardhat node >/dev/null &
-  sleep 0.2 # Short wait for the node to be ready but students should check.
+  echo "Waiting for Hardhat server to start..."
+
+  # Loop until the server responds
+  until nc -z localhost 8545; do
+    echo "Server is not up yet. Retrying in a seconds..."
+    sleep 1
+  done
+
+  echo "Hardhat server is up!"
   # Launch the tests
   xx hardhat test "/jail/test/${EXERCISE}.test.js"
 else
