@@ -5,6 +5,7 @@
 
 ## Constants
 CONTENT_FOLDER=/app
+export NODE_OPTIONS="--dns-result-order=ipv4first"
 
 shopt -s expand_aliases
 alias xx='bunx --bun' # alternatives : 'npx' 'bunx --bun'
