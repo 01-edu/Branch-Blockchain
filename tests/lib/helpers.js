@@ -27,7 +27,7 @@ const pp_options = {
   args: [
     // This is needed to chrome with puppeteer
     '--no-sandbox',
-    // Some of the following might be applied by default by puppeteer or ineffective
+    // Potential optimizations, but some might be already applied by puppeteer or ineffective
     '--disable-setuid-sandbox',
     '--disable-dev-shm-usage',
     '--disable-accelerated-2d-canvas',
@@ -42,9 +42,11 @@ const pp_options = {
     '--disable-default-apps',
     '--disable-features=Translate',
     '--no-default-browser-check',
-    '--ignore-certificate-errors'
+    '--ignore-certificate-errors',
+    '--disable-gl-drawing-for-tests',
     //--disable-extensions // Might be necessary for metamask tests
-  ]
+  ], 
+  headless: "old" // Avoids warning for running the older headless mode on new versions of Chrome. 
 }
 // Interesting idea:
 // const opts = process.env.D ? { headless: false, slowMo: 250 } : {}; 

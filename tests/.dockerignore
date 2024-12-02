@@ -6,6 +6,7 @@ dft*
 cache
 artifacts
 node_modules
+*.log
 
 # Simply unecessary files
 .eslintrc.json
